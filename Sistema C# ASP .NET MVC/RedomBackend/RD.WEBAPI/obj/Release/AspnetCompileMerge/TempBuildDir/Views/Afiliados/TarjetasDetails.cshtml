@@ -1,0 +1,88 @@
+﻿@model IEnumerable<RD.WEBAPI.Models.TarjetasDetails>
+@{
+    ViewBag.Title = "Detalles de Tarjeta";
+}
+<div class="wrapper">
+    @Html.Partial("~/Views/Shared/_Header.cshtml")
+
+    @*Import Sidebar Left*@
+    @Html.Partial("~/Views/Shared/_SidebarLeft.cshtml")
+    <div class="wrapper">
+        <div class="content-wrapper">
+            <section class="content-header">
+                <h1>
+                    Sistema de gestión
+                    <small>Tarjeta de Afiliado</small>
+                </h1>
+                <ol class="breadcrumb">
+                    <li><a href="#"><i class="fa fa-newspaper-o"></i> Home</a></li>
+                    <li><a href="#">Tarjeta</a></li>
+                </ol>
+            </section>
+            <section class="content">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="box">
+                            <div class="box-header">
+                                <h3 class="box-title">Pagos por Tarjeta</h3>
+                                <hr />
+                            </div><!-- /.box-header -->
+                            <div class="box-body">
+                                <div>
+                                    <h4>Detalle de Tarjeta</h4>
+                                    <hr />
+                                    <table class="table table-bordered table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>
+                                                    Tipo
+                                                </th>
+                                                <th>
+                                                   Concepto
+                                                </th>
+                                                <th>
+                                                   Monto
+                                                </th>
+                                                <th>
+                                                   Fecha
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var item in Model)
+                                            {
+                                                <tr>
+                                                    <td>                                                        
+                                                        <a href="@Html.DisplayFor(modelItem => item.Url)">@Html.DisplayFor(modelItem => item.Tipo)</a>
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.Concepto)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.Monto)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.Fecha)
+                                                    </td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                        
+                                        <p>
+                                            <a class="btn btn-danger pull-right" id="especialTarjet">Cerrar</a>
+                                        </p>
+</div>
+                            </div><!-- /.box-body -->
+                        </div><!-- /.box -->
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </section><!-- /.content -->
+        </div>
+       </div>
+    </div>
+<script>
+    $('#especialTarjet').click(function () {
+        window.close();
+    })
+</script>

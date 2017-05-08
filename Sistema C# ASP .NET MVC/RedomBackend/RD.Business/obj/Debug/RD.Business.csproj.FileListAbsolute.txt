@@ -1,0 +1,17 @@
+C:\Users\Jean Robles\Source\Workspaces\RedomBackend\RD.Business\bin\Debug\RD.Business.dll.config
+C:\Users\Jean Robles\Source\Workspaces\RedomBackend\RD.Business\bin\Debug\RD.Business.dll
+C:\Users\Jean Robles\Source\Workspaces\RedomBackend\RD.Business\bin\Debug\RD.Business.pdb
+C:\Users\Jean Robles\Source\Workspaces\RedomBackend\RD.Business\bin\Debug\CrystalDecisions.CrystalReports.Engine.dll
+C:\Users\Jean Robles\Source\Workspaces\RedomBackend\RD.Business\bin\Debug\CrystalDecisions.Shared.dll
+C:\Users\Jean Robles\Source\Workspaces\RedomBackend\RD.Business\bin\Debug\EntityFramework.dll
+C:\Users\Jean Robles\Source\Workspaces\RedomBackend\RD.Business\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Jean Robles\Source\Workspaces\RedomBackend\RD.Business\bin\Debug\RD.Data.dll
+C:\Users\Jean Robles\Source\Workspaces\RedomBackend\RD.Business\bin\Debug\RD.Repository.dll
+C:\Users\Jean Robles\Source\Workspaces\RedomBackend\RD.Business\bin\Debug\RD.Data.pdb
+C:\Users\Jean Robles\Source\Workspaces\RedomBackend\RD.Business\bin\Debug\RD.Repository.pdb
+C:\Users\Jean Robles\Source\Workspaces\RedomBackend\RD.Business\bin\Debug\EntityFramework.xml
+C:\Users\Jean Robles\Source\Workspaces\RedomBackend\RD.Business\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Jean Robles\Source\Workspaces\RedomBackend\RD.Business\obj\Debug\RD.Business.csprojResolveAssemblyReference.cache
+C:\Users\Jean Robles\Source\Workspaces\RedomBackend\RD.Business\obj\Debug\RD.Business.csproj.ResolveComReference.cache
+C:\Users\Jean Robles\Source\Workspaces\RedomBackend\RD.Business\obj\Debug\RD.Business.dll
+C:\Users\Jean Robles\Source\Workspaces\RedomBackend\RD.Business\obj\Debug\RD.Business.pdb

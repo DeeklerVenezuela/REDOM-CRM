@@ -1,0 +1,106 @@
+﻿@model RD.Data.Models.Empleado
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Empleado</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Login.UserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Login.UserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombres)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombres)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Apellido1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Apellido1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Apellido2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Apellido2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cedula)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cedula)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cumpleanio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cumpleanio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Comentarios)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Comentarios)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SueldoBase)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SueldoBase)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PComisionMembresia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PComisionMembresia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PComisionReserva)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PComisionReserva)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.EmpleadoID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

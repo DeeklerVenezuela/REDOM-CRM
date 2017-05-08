@@ -1,0 +1,4 @@
+C:\Users\Jean Robles\Source\Workspaces\RedomBackend\RD.Repository\bin\Debug\RD.Repository.dll
+C:\Users\Jean Robles\Source\Workspaces\RedomBackend\RD.Repository\bin\Debug\RD.Repository.pdb
+C:\Users\Jean Robles\Source\Workspaces\RedomBackend\RD.Repository\obj\Debug\RD.Repository.dll
+C:\Users\Jean Robles\Source\Workspaces\RedomBackend\RD.Repository\obj\Debug\RD.Repository.pdb

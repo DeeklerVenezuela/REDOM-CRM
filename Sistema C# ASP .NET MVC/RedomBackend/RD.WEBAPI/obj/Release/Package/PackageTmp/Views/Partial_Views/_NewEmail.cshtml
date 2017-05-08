@@ -1,0 +1,19 @@
+﻿@model RD.Data.Models.EmailUsuario
+
+<div class="form-group email-con" id="email_@(ViewBag.Num)">
+
+    <label class="control-label col-md-2">
+        Email
+    </label>
+
+    <div class="col-md-8">
+        <div class="input-group col-md-12">
+            <input class="form-control text-box single-line" id="Emails_@(ViewBag.Num)__Email" name="Emails[@(ViewBag.Num)].Email" placeholder="Ej: alguien@dominio.com" required="required" type="email" value="">
+        </div>
+
+    </div>
+    <div class="col-md-1">
+        <button class="btn btn-danger btn-sm" onclick="$('#email_@(ViewBag.Num)').remove(); $('#Emails_@(ViewBag.Num)__Email').val(''); $('#Emails_@(ViewBag.Num)__Email').removeAttr('required'); return false;"><span class="glyphicon glyphicon-trash"></span></button>    
+    </div>
+
+</div>

@@ -1,0 +1,258 @@
+﻿@model RD.Data.Models.Afiliado
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<style>
+    .report-field {
+        border-bottom: solid 1px #000;
+    }
+
+    label {
+        text-align: left;
+    }
+
+    .specialRow {
+        border: solid 1px #000;
+        padding: 15px 10px;
+    }
+
+    p {
+        text-align: center;
+    }
+</style>
+
+<div class="col-md-12">
+    <img src="~/Images/ImageReport.png" class="img-responsive center-block" /><br />
+</div>
+<div class="container">
+    <div class="form-horizontal">
+        <div class="row">
+            <div class="col-md-6 col-sm-6 col-xs-6">
+                <div class="form-group">
+                    <label class="control-label col-md-5 col-sm-5 col-xs-5 pull-left"># DE TARJETA DEL SOCIO </label>
+                    <div class="col-md-7 col-sm-7 col-xs-7 report-field">
+                        @{var b = Model.AfiliadoIndice.ToString();
+                        if (b.Length > 4)
+                        {
+                            @Html.Raw("7777-2552-" + b.Substring(1, 4) + "-" + b.Substring(4, 4))
+                        }
+                        else
+                        {
+                            @Html.DisplayFor(model => model.AfiliadoIndice)
+                        }
+
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-sm-6 col-xs-6">
+                <div class="form-group">
+                    <label class="control-label col-md-2 col-sm-2 col-xs-2">TKM</label>
+                    <div class="col-md-10 col-sm-10 col-xs-10 report-field">
+                        @Html.Raw(Model.RazonSocial)
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-6">
+                <div class="form-group">
+                    <label class="control-label col-md-2 col-sm-2 col-xs-2">FECHA</label>
+                    <div class="col-md-10 col-sm-10 col-xs-10 report-field">
+                        @Html.Raw(Model.FechaHora)
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row specialRow">
+            <div class="col-md-6 col-sm-6 col-xs-6">
+                <div class="form-group">
+                    <label class="control-label col-md-2 col-sm-2 col-xs-2">SOCIO</label>
+                    <div class="col-md-10 col-sm-10 col-xs-10 report-field">
+                        @Html.Raw(Model.Nombres) @Html.Raw(Model.Apellido1) @Html.Raw(Model.Apellido2)
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-6">
+                <div class="form-group">
+                    <label class="control-label col-md-2 col-sm-2 col-xs-2">CEDULA</label>
+                    <div class="col-md-10 col-sm-10 col-xs-10 report-field">
+                        @Html.Raw(Model.Cedula)
+                    </div>
+                </div>
+            </div>
+            @foreach (var dir in Model.Direcciones)
+            {
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="form-group">
+                        <label class="control-label col-md-2 col-sm-2 col-xs-2">DIRECCIÓN</label>
+                        <div class="col-md-10 col-sm-10 col-xs-10 report-field">
+                            @Html.Raw(dir.Descripcion)
+                        </div>
+                    </div>
+                </div>
+            }
+            @foreach (var telf in Model.Telefonos)
+            {
+                <div class="col-md-4 col-sm-4 col-xs-4">
+                    <div class="form-group">
+                        <label class="control-label col-md-5 col-sm-5 col-xs-5">Tel. @Html.Raw(telf.Tipo)</label>
+                        <div class="col-md-7 col-sm-7 col-xs-7 report-field">
+                            @Html.Raw(telf.Extension) @Html.Raw(telf.Descripcion)
+                        </div>
+                    </div>
+                </div>
+            }
+            @foreach (var emails in Model.Emails)
+            {
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="form-group">
+                        <label class="control-label col-md-2 col-sm-2 col-xs-2">Email</label>
+                        <div class="col-md-10 col-sm-10 col-xs-10 report-field">
+                            @Html.Raw(emails.Email)
+                        </div>
+                    </div>
+                </div>
+            }
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="form-group">
+                    <label class="control-label col-md-2 col-sm-2 col-xs-2">Cumpleaño</label>
+                    <div class="col-md-10 col-sm-10 col-xs-10 report-field">
+                        @Html.Raw(Model.Cumpleanio)
+                    </div>
+                </div>
+            </div>
+            @foreach (var tarjetas in Model.Tarjetas)
+            {
+                <div class="col-md-8 col-sm-8 col-xs-8">
+                    <div class="form-group">
+                        <label class="control-label col-md-4 col-sm-4 col-xs-4">BCO. # TARJETA</label>
+                        <div class="col-md-8 col-sm-8 col-xs-8 report-field">
+                            @Html.Raw(tarjetas.Banco) - @Html.Raw(tarjetas.NumeroTarjeta)
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-4">
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-3">VENCE</label>
+                        <div class="col-md-9 col-sm-9 col-xs-9 report-field">
+                            @Html.Raw(tarjetas.FechaVencimiento)
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-7 col-sm-7 col-xs-7">
+                <div class="form-group">
+                    <label class="control-label col-md-5 col-sm-5 col-xs-5"># DE MESES ADICIONALES</label>
+                    <div class="col-md-7 col-sm-7 col-xs-7 report-field">
+                        @Html.Raw(Model.MesAdicionalCan)
+                    </div>
+                </div>
+            </div>
+        </div>
+        @foreach (var tarja in Model.TarjetasAdicionales)
+        {
+            <div class="col-md-7 col-sm-7 col-xs-7">
+                <div class="form-group">
+                    <label class="control-label col-md-5 col-sm-5 col-xs-5">TARJETA DE SOCIO ADICIONAL </label>
+                    <div class="col-md-7 col-sm-7 col-xs-7 report-field">
+                        @Html.Raw(Model.TarjetaAdicionalCan)
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-7 col-sm-7 col-xs-7">
+                <div class="form-group">
+                    <label class="control-label col-md-5 col-sm-5 col-xs-5">A NOMBRE DE</label>
+                    <div class="col-md-7 col-sm-7 col-xs-7 report-field">
+                        @Html.Raw(tarja.Nombre)
+                    </div>
+                </div>
+            </div>
+        }
+        <div class="row">
+            <div class="col-md-7 col-sm-7 col-xs-7">
+                <div class="form-group">
+                    <label class="control-label col-md-5 col-sm-5 col-xs-5">MEMBRESÍA VENCE</label>
+                    <div class="col-md-7 col-sm-7 col-xs-7 report-field">
+                        @Html.Raw(Model.FechaVencimiento)
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="form-group">
+                    <label class="control-label col-md-2 col-sm-2 col-xs-2">OBSERVACIONES</label>
+                    <div class="col-md-10 col-sm-10 col-xs-10 report-field">
+                        @if (!String.IsNullOrEmpty(Model.Observaciones))
+                        {
+                            @Html.Raw(Model.Observaciones)
+                        }
+                        else
+                        {
+                            @Html.Raw("--")
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row specialRow">
+            <br />
+            <p>USO INTERNO</p>
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="form-group">
+                    <label class="control-label col-md-2 col-sm-2 col-xs-2">BIENVENIDA POR</label>
+                    <div class="col-md-10 col-sm-10 col-xs-10 report-field">
+                        @Html.Raw(Model.UsuarioBienvenida.Nombres) @Html.Raw(Model.UsuarioBienvenida.Apellido1) @Html.Raw(Model.UsuarioBienvenida.Apellido2)
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="form-group">
+                    <label class="control-label col-md-2 col-sm-2 col-xs-2">OBSERVACIONES</label>
+                    <div class="col-md-10 col-sm-10 col-xs-10 report-field">
+                        @Html.Raw("--")
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        window.print();
+        //var onPrintFinished = function (printed) { console.log("do something..."); }
+
+        //print command
+        //onPrintFinished(window.print());
+        var beforePrint = function () {
+            console.log('Functionality to run before printing.');
+        };
+
+        var afterPrint = function () {
+            console.log('Functionality to run after printing');
+        };
+
+        if (window.matchMedia) {
+            var mediaQueryList = window.matchMedia('print');
+            mediaQueryList.addListener(function (mql) {
+                if (mql.matches) {
+                    beforePrint();
+                } else {
+                    afterPrint();
+                }
+            });
+        }
+
+        window.onbeforeprint = beforePrint;
+        window.onafterprint = afterPrint;
+        
+    })
+    
+</script>

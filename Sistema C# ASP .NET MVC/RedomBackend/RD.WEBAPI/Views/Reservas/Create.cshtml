@@ -1,0 +1,326 @@
+﻿@model RD.Data.Models.Reserva
+
+@{
+    ViewBag.Title = "Hoteles";
+}
+
+<div class="wrapper">
+
+    @Html.Partial("~/Views/Shared/_Header.cshtml")
+
+    @Html.Partial("~/Views/Shared/_SidebarLeft.cshtml")
+    <div class="wrapper">
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>
+                    Sistema de gestión
+                    <small>Reservas</small>
+                </h1>
+                <ol class="breadcrumb">
+                    <li><a href="#"><i class="fa fa-newspaper-o"></i> Home</a></li>
+                    <li><a href="#">Reservas</a></li>
+                </ol>
+            </section>
+            <section class="content">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="box">
+                            <div class="box-header">
+                                <h3 class="box-title">Reservas de hoteles</h3>
+                                <hr />
+                            </div><!-- /.box-header -->
+                            <div class="box-body">
+
+                                @using (Html.BeginForm())
+                                {
+                                    @Html.AntiForgeryToken()
+
+                                    <div class="form-horizontal">
+
+                                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="control-label col-md-4">Hotel</label>
+                                                <div class="col-md-8">
+                                                    @Html.DropDownListFor(model => model.Hotel.HotelID, new SelectList(ViewBag.Hoteles, "HotelID", "Nombre"), new { @class = "form-control hotelAjax" })
+                                                    @Html.ValidationMessageFor(model => model.Hotel.HotelID, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.Costo, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                <div class="col-md-10">
+                                                    @Html.EditorFor(model => model.Costo, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                                    @Html.ValidationMessageFor(model => model.Costo, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <div class="col-md-5">
+                                                 
+                                                    <div class="checkbox-inline">
+                                                        <label class="control-label">
+                                                            @Html.CheckBox("Aplicar", new { @class = "aplicar-certificado" }) Cert. de Regalo
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="col-md-7">
+                                                    @Html.DropDownListFor(model => model.Certificado.CertificadoDeRegaloID, new SelectList(ViewBag.Certificados, "CertificadoDeRegaloID", "Nombre"), new { @class = "form-control certificado", @disabled = "disabled" })
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="box box-default collapsed-box" id="box-price-hot">
+                                                <div class="box-header with-border">
+                                                    <h3 class="box-title">Precios de este hotel</h3>
+                                                    <div class="box-tools pull-right">
+                                                        <button id="collapse-price" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                                                    </div><!-- /.box-tools -->
+                                                </div><!-- /.box-header -->
+                                                <div class="box-body">
+                                                    <div class="col-md-3">
+                                                        <div class="form-group">
+                                                            <label class="control-label col-md-2">SGL</label>
+
+                                                            <div class="col-md-10">
+                                                                <input type="text" value="" id="hotelSGL" class="form-control" readonly />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-group">
+                                                            <label class="control-label col-md-2">DBL</label>
+
+                                                            <div class="col-md-10">
+                                                                <input type="text" value="" id="hotelDBL" class="form-control" readonly />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-group">
+                                                            <label class="control-label col-md-2">TPL</label>
+
+                                                            <div class="col-md-10">
+                                                                <input type="text" value="" id="hotelTPL" class="form-control" readonly />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-group">
+                                                            <label class="control-label col-md-2">CPL</label>
+
+                                                            <div class="col-md-10">
+                                                                <input type="text" value="" id="hotelCPL" class="form-control" readonly />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-group">
+                                                            <label class="control-label col-md-2">CHD</label>
+
+                                                            <div class="col-md-10">
+                                                                <input type="text" value="" id="hotelCHD" class="form-control" readonly />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-group">
+                                                            <label class="control-label col-md-5">CHD FREE</label>
+
+                                                            <div class="col-md-7">
+                                                                <input type="text" value="" id="hotelCHDF" class="form-control" readonly />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div><!-- /.box-body -->
+                                            </div>
+                                        </div>
+
+
+
+
+
+
+
+
+
+                                        <div class="col-md-6 hidden">
+                                                <div class="form-group">
+                                                    @Html.LabelFor(model => model.CantidadAdultos, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                    <div class="col-md-10">
+                                                        @Html.EditorFor(model => model.CantidadAdultos, new { htmlAttributes = new { @class = "form-control" } })
+                                                        @Html.ValidationMessageFor(model => model.CantidadAdultos, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6 hidden">
+                                                <div class="form-group">
+                                                    @Html.LabelFor(model => model.CantidadNinios, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                    <div class="col-md-10">
+                                                        @Html.EditorFor(model => model.CantidadNinios, new { htmlAttributes = new { @class = "form-control" } })
+                                                        @Html.ValidationMessageFor(model => model.CantidadNinios, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                       
+
+
+                                        <div class="col-md-12">
+                                            <div class="box box-default" id="box-price">
+                                                <div class="box-header with-border">
+                                                    <h3 class="box-title">Datos de reserva</h3>
+                                                    <div class="box-tools pull-right">
+                                                        <button id="collapse-price" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                                                    </div><!-- /.box-tools -->
+                                                </div><!-- /.box-header -->
+                                                <div class="box-body reserva-body" style="display:block;">
+
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label class="control-label col-md-2">Entrada</label>
+
+                                                            <div class="col-md-10">
+                                                                <div class='input-group date datepicker'>
+                                                                    @Html.EditorFor(model => model.Entrada, new { htmlAttributes = new { @class = "form-control datepickerinput", @readonly = "readonly", @required = "required", @placeholder = "Fecha de entrada" } })
+                                                                    <span class="input-group-addon add-on">
+                                                                        <span class="glyphicon glyphicon-calendar">
+                                                                        </span>
+                                                                    </span>
+                                                                </div>
+                                                                @Html.ValidationMessageFor(model => model.Entrada, "", new { @class = "text-danger" })
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label class="control-label col-md-2">Días</label>
+                                                            <div class="col-md-10">
+                                                                @Html.EditorFor(model => model.Dias, new { htmlAttributes = new { @class = "form-control ", @min = "0" } })
+                                                                @Html.ValidationMessageFor(model => model.Dias, "", new { @class = "text-danger" })
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    
+                                                   @Html.EditorFor(model => model.Afiliado.AfiliadoID, new { htmlAttributes = new { @class = "hidden", @Value=ViewBag.Afiliado.AfiliadoID } })
+                                                                
+
+                                                    <div class="col-md-4 hide" id="pHabc">
+                                                        <div class="form-group">
+                                                            <label class="control-label col-md-4">Habitaciones</label>
+                                                            <div class="col-md-4">
+                                                                <input type="number" value="1" min="1" max="8" class="form-control" id="cant-hab" readonly/>
+                                                                
+                                                                @*<select class="form-control" id="cant-hab">
+                                                                    <option>1</option>
+                                                                    <option>2</option>
+                                                                    <option>3</option>
+                                                                    <option>4</option>
+                                                                    <option>5</option>
+                                                                    <option>6</option>
+                                                                    <option>7</option>
+                                                                    <option>8</option>
+                                                                </select>*@
+                                                            </div>
+                                                            <div class="col-md-2">
+                                                                <a id="hab-more" class="btn btn-primary btn-sm calc-hab" data-type="+"><span class="glyphicon glyphicon-plus"></span></a>
+                                                            </div>
+                                                            <div class="col-md-2">
+                                                                <a id="hab-less" class="btn btn-primary btn-sm calc-hab" data-type="-"><span class="glyphicon glyphicon-minus"></span></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <hr />
+                                                    </div>
+                                                    <div id="hotel-container">
+                                                       
+                                                        <div class=" con-hab form-group col-md-12 hide" id="hotel-1" data-hotel="1">
+                                                            <div class="col-md-4">
+                                                                <div class="form-group">
+                                                                    <label class="control-label col-md-2">Adultos</label>
+                                                                    <div class="col-md-10">
+                                                                        <input type="number" min="0" max="4" value="1" class="spinners form-control" data-hab="1" id="ad1" data-type="a">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-md-4">
+                                                                <div class="form-group">
+                                                                    <label class="control-label col-md-2">Niños</label>
+                                                                    <div class="col-md-10">
+                                                                        <input type="number" min="0" max="0" value="0" class="spinners form-control" data-hab="1" id="ni1" data-type="n">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-md-1">
+                                                                <button disabled class="btn btn-danger btn-sm" onclick="RemoveHotel(1); return false;"><span class="glyphicon glyphicon-trash"></span></button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div><!-- /.box-body -->
+                                            </div>
+                                        </div>
+
+
+
+
+                                        @*<div class="form-group">
+                                                @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                <div class="col-md-10">
+                                                    @Html.EditorFor(model => model.Status, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>*@
+                                        <div id="Habs" class="form-group col-md-12 hidden">
+                                                  
+                                        </div>                                     
+                                        
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <h2>Descripción de reserva</h2>
+                                                <table class="datatable table table-bordered table-striped" id="habs-table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Tipo de habitación</th>
+                                                            <th>Cantidad</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody></tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <input type="submit" value="Guardar" class="btn btn-primary pull-right" />
+                                                @Html.ActionLink("Volver al listado", "Index")
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+
+                            </div><!-- /.box-body -->
+                        </div><!-- /.box -->
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+
+            </section><!-- /.content -->
+        </div><!-- /.content-wrapper -->
+    </div>
+</div>
+
+
+@*Import Sidebar Right*@
+@Html.Partial("~/Views/Shared/_SidebarRight.cshtml")

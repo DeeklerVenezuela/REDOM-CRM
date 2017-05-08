@@ -1,0 +1,215 @@
+﻿@model RD.Data.Models.Empresa
+
+@{
+    ViewBag.Title = "Empresa";
+}
+
+<div class="wrapper">
+
+    @Html.Partial("~/Views/Shared/_Header.cshtml")
+
+    @*Import Sidebar Left*@
+    @Html.Partial("~/Views/Shared/_SidebarLeft.cshtml")
+    <div class="wrapper">
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>
+                    Sistema de gestión
+                    <small>Empresa</small>
+                </h1>
+                <ol class="breadcrumb">
+                    <li><a href="#"><i class="fa fa-newspaper-o"></i> Home</a></li>
+                    <li><a href="#">Empresa</a></li>
+                </ol>
+            </section>
+            <section class="content">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="box">
+                            <div class="box-header">
+                                <h3 class="box-title">Datos de la empresa</h3>
+                                <hr />
+                            </div><!-- /.box-header -->
+                            <div class="box-body">
+
+                                @using (Html.BeginForm("Edit", "Empresas", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+                                {
+                                    @Html.AntiForgeryToken()
+
+                                    <div class="form-horizontal">
+                                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                        @Html.HiddenFor(model => model.EmpresaID)
+
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                    <div class="col-md-10">
+                                                        @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control" } })
+                                                        @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label class = "control-label col-md-4">Identificación Fiscal</label>
+                                                    <div class="col-md-8">
+                                                        @Html.EditorFor(model => model.IDFiscal, new { htmlAttributes = new { @class = "form-control rnc-emp-mask" } })
+                                                        @Html.ValidationMessageFor(model => model.IDFiscal, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    @Html.LabelFor(model => model.Direccion, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                    <div class="col-md-10">
+                                                        @Html.EditorFor(model => model.Direccion, new { htmlAttributes = new { @class = "form-control" } })
+                                                        @Html.ValidationMessageFor(model => model.Direccion, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                  
+
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                    <div class="col-md-10">
+                                                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control",@type="email" } })
+                                                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    @Html.LabelFor(model => model.Telefono, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                    <div class="col-md-10">
+                                                        @Html.EditorFor(model => model.Telefono, new { htmlAttributes = new { @class = "form-control telefono-mask" } })
+                                                        @Html.ValidationMessageFor(model => model.Telefono, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    @Html.LabelFor(model => model.Website, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                    <div class="col-md-10">
+                                                        @Html.EditorFor(model => model.Website, new { htmlAttributes = new { @class = "form-control" } })
+                                                        @Html.ValidationMessageFor(model => model.Website, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-2">Logo</label>
+                                                    <div class="col-md-10">
+                                                        <input type="file" id="file" name="upload" accept="image/png">
+                                                        <p for="" class="help-block text-red">* El logo debe estar en formato .png</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            
+
+                                            <div class="col-md-12">
+                                                
+                                                <h4>Configuración Básica de afiliaciones</h4>
+                                                <hr />
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label class="control-label col-md-6">Meses adicionales para afiliaciones</label>
+                                                        <div class="col-md-6">
+                                                            @Html.EditorFor(model => model.MesesAdicionales, new { htmlAttributes = new { @class = "form-control" } })
+                                                            @Html.ValidationMessageFor(model => model.MesesAdicionales, "", new { @class = "text-danger" })
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label class="control-label col-md-6">Tarjetas adicionales para afiliaciones</label>
+                                                        <div class="col-md-6">
+                                                            @Html.EditorFor(model => model.TarjetasAdicionales, new { htmlAttributes = new { @class = "form-control" } })
+                                                            @Html.ValidationMessageFor(model => model.TarjetasAdicionales, "", new { @class = "text-danger" })
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <h4>Configurción de documentación</h4>
+                                                <hr />
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label class="control-label col-md-6">Monto mínimo para generación de docuentación ($)</label>
+                                                        <div class="col-md-6">
+                                                            @Html.EditorFor(model => model.MontoDocumentacion, new { htmlAttributes = new { @class = "form-control" } })
+                                                            @Html.ValidationMessageFor(model => model.MontoDocumentacion, "", new { @class = "text-danger" })
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-12">
+                                                <h4>Configurción de Reservas</h4>
+                                                <hr />
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label class="control-label col-md-6">Monto mínimo para generación de reservas ($)</label>
+                                                        <div class="col-md-6">
+                                                            @Html.EditorFor(model => model.MontoReserva, new { htmlAttributes = new { @class = "form-control" } })
+                                                            @Html.ValidationMessageFor(model => model.MontoReserva, "", new { @class = "text-danger" })
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-12">
+                                                <h4>Configurción de Tasa de Cambio</h4>
+                                                <hr />
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label class="control-label col-md-6">Tasa de cambio actual Peso Dominicano($) a Dolar USD($)</label>
+                                                        <div class="col-md-6">
+                                                            @Html.EditorFor(model => model.TasaDeCambio, new { htmlAttributes = new { @class = "form-control" } })
+                                                            @Html.ValidationMessageFor(model => model.TasaDeCambio, "", new { @class = "text-danger" })
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            
+                                            
+
+                                            <div class="col-md-12">
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        @Html.ActionLink("Volver", "Index")
+                                                        <input type="submit" value="Guardar" class="btn btn-primary pull-right" />
+                                                       
+                                                        
+                                                    </div>
+                                                </div>
+                                                
+                                            </div>
+                                        </div>
+                                        
+
+                                        
+
+                                        
+
+                                        
+                                    </div>
+                                }
+
+                                <div>
+                                    
+                                </div>
+                            </div><!-- /.box-body -->
+                        </div><!-- /.box -->
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </section><!-- /.content -->
+        </div><!-- /.content-wrapper -->
+    </div>
+</div>
+
+
+@*Import Sidebar Right*@
+@Html.Partial("~/Views/Shared/_SidebarRight.cshtml")

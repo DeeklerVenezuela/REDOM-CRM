@@ -1,0 +1,15 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<div class="container">
+    <h2 class="text-blue">Felicidades proceso de subida completado</h2><br />
+    <hr />
+    <p>Se han inserado @(ViewBag.Insertados) registros</p><br />
+    @Html.ActionLink("Volver al cargador de afiliados ", "Index")
+    | @Html.ActionLink(" Ir a afiliados","Index","Afiliados", null, null)
+</div>
+
+
+
+

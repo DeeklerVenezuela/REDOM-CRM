@@ -1,0 +1,115 @@
+﻿@model IEnumerable<RD.Data.Models.MembresiaVence>
+
+@{
+    ViewBag.Title = "Afiliaciones Vencidas";
+}
+<div class="wrapper">
+
+    @Html.Partial("~/Views/Shared/_Header.cshtml")
+
+    @*Import Sidebar Left*@
+    @Html.Partial("~/Views/Shared/_SidebarLeft.cshtml")
+    <div class="wrapper">
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>
+                    Sistema de gestión
+                    <small>Afiliaciones Vencidas</small>
+                </h1>
+                <ol class="breadcrumb">
+                    <li><a href="#"><i class="fa fa-newspaper-o"></i> Home</a></li>
+                    <li><a href="#">Afiliaciones Vencidas</a></li>
+                </ol>
+            </section>
+            <section class="content">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="box">
+                            <div class="box-header">
+                                <h3 class="box-title">Afiliaciones Vencidas</h3>
+                                <hr />
+                            </div><!-- /.box-header -->
+                            @*<p>
+                                @Html.ActionLink("Create New", "Create")
+                            </p>*@
+                            <div class="box-body">
+                                <table id="tableIDA" class="datatableUI table table-bordered table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                ID Afiliado
+                                            </th>
+                                            <th>
+                                                Cédula
+                                            </th>
+                                            <th>
+                                                Nombre
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.FechaInicio)
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.FechaFin)
+                                            </th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+                        </div><!-- /.box -->
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </section><!-- /.content -->
+        </div><!-- /.content-wrapper -->
+                    </div>
+                </div>
+
+
+                @*Import Sidebar Right*@
+                @Html.Partial("~/Views/Shared/_SidebarRight.cshtml")
+<script>
+    $(document).ready(function () {
+
+        $('#tableIDA').DataTable().destroy();
+        $('#tableIDA').DataTable({
+            "bProcessing": true,
+            "bServerSide": true,
+            "sAjaxSource": "MembresiaVence/GetAllAfiAsy",
+            "aoColumns": [
+                            {
+                                "sName": "AfiliadoIndice",
+                                "bSearchable": true,
+                                "pagingType": "full_numbers",
+                                "pagingType": "scrolling",
+                                "bSortable": false,
+                                "fnRender": function (oObj) {
+                                    return '<a href=\"Details/' +
+                                    oObj.aData[0] + '\">View</a>';
+                                }
+                            },
+                            {
+                                "sName": "Cedula",
+                                "bSortable": false
+                            },
+                            {
+                                "sName": "Nombre",
+                                "bSortable": false
+                            },
+                            {
+                                "sName": "FechaInicio",
+                                "bSortable": false
+                            },
+                            {
+                                "sName": "FechaFin",
+                                "bSortable": false
+                            },
+                            {
+                                "sName": "Actions",
+                                "bSortable": false
+                            }
+            ]
+        });
+     });
+</script>

@@ -1,0 +1,56 @@
+﻿@*Import Header*@
+<div class="wrapper">
+
+    @Html.Partial("~/Views/Shared/_Header.cshtml")
+
+    @*Import Sidebar Left*@
+    @Html.Partial("~/Views/Shared/_SidebarLeft.cshtml")
+    <div class="wrapper">
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            
+
+            <!-- Main content -->
+            <section class="content">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div id="logo-home">
+                            <img src="~/Images/logo.png" class="img-responsive" /><br />
+                            <p class="text-center text-blue text-bold">@ViewBag.Empresa</p>
+                        </div>
+                   
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </section><!-- /.content -->
+        </div><!-- /.content-wrapper -->
+    </div>
+    </div>
+        
+
+        @*Import Sidebar Right*@
+        @Html.Partial("~/Views/Shared/_SidebarRight.cshtml")
+
+<script>
+    $(document).ready(function () {
+        $.ajax({
+            url: "/Home/PintarMemb",
+            type: "post",
+            success: function (result) {
+                //alert(result);
+                if (sessionStorage.PaintRed) {
+                    if (sessionStorage.PaintRed == "True") {
+                        //$('#paintRed').addClass("paintRedL");
+                        $('#paintRed').css("background", "red");
+                    }
+                } else {
+                    sessionStorage.PaintRed = result;
+                    if (sessionStorage.PaintRed == "True") {
+                       // $('#paintRed').addClass("paintRedL");
+                        $('#paintRed').css("background", "red");
+                    }
+                }
+            }
+        });
+    })
+</script>
+

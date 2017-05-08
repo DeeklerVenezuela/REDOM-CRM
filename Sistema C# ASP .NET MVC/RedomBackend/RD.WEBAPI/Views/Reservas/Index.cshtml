@@ -1,0 +1,113 @@
+﻿@model IEnumerable<RD.Data.Models.Afiliado>
+
+@{
+    ViewBag.Title = "Reservas";
+
+}
+
+<div class="wrapper">
+
+    @Html.Partial("~/Views/Shared/_Header.cshtml")
+
+    @Html.Partial("~/Views/Shared/_SidebarLeft.cshtml")
+    <div class="wrapper">
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>
+                    Sistema de gestión
+                    <small>Reservas</small>
+                </h1>
+                <ol class="breadcrumb">
+                    <li><a href="#"><i class="fa fa-newspaper-o"></i> Home</a></li>
+                    <li><a href="#">Reservas</a></li>
+                </ol>
+            </section>
+            <section class="content">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="box">
+                            <div class="box-header">
+                                <h3 class="box-title">Reservas de hoteles</h3>
+                                <hr />
+                            </div><!-- /.box-header -->
+                            <div class="box-body">
+
+                                @*<p>
+                                    @Html.ActionLink("Create New", "Create")
+                                </p>*@
+                                <table class="datatableUI table table-bordered table-striped">
+                                    <thead>
+                                        <tr>
+                                            
+                                            <th>
+                                                Afiliado Indice@*Html.DisplayNameFor(model => model.AfiliadoIndice)*@
+                                            </th>
+                                            <th>
+                                                Cédula
+                                            </th>
+                                            <th>
+                                                Nombre
+                                            </th>
+                                            <th>
+                                                Apellido
+                                            </th>
+                                            <th>
+                                                Fecha de Afiliación
+                                            </th>
+                                            
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    @*Html.DisplayFor(modelItem => item.AfiliadoIndice)*@
+                                                    @{var i = item.AfiliadoIndice.ToString();
+                                                      while (i.Length < 8)
+                                                      {
+                                                          i = "0" + i;
+                                                      }
+                                                      if (i.Length > 4)
+                                                    {
+                                                        @Html.Raw("7777-2552-" + i.Substring(0, 4) + "-" + i.Substring(4, 4))
+                                                    }
+                                                    
+
+                                                    }
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Cedula)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Nombres)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Apellido1)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.FechaHora)
+                                                </td>
+                                                
+                                                <td>
+                                                    @Html.ActionLink("Reservar", "Create", new { id = item.AfiliadoID }) |
+                                                    @Html.ActionLink("Ver Reservas", "ReservasUsuario", new { id = item.AfiliadoID })
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div><!-- /.box-body -->
+                        </div><!-- /.box -->
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </section><!-- /.content -->
+        </div><!-- /.content-wrapper -->
+    </div>
+</div>
+
+
+@*Import Sidebar Right*@
+@Html.Partial("~/Views/Shared/_SidebarRight.cshtml")

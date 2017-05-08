@@ -1,0 +1,97 @@
+﻿@model RD.Data.Models.PagosReserva
+
+@{
+    ViewBag.Title = "Pagos";
+}
+
+<div class="wrapper">
+
+    @Html.Partial("~/Views/Shared/_Header.cshtml")
+
+    @*Import Sidebar Left*@
+    @Html.Partial("~/Views/Shared/_SidebarLeft.cshtml")
+    <div class="wrapper">
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>
+                    Sistema de gestión
+                    <small>Pagos de reservas</small>
+                </h1>
+                <ol class="breadcrumb">
+                    <li><a href="#"><i class="fa fa-newspaper-o"></i> Home</a></li>
+                    <li><a href="#">Pagos de reservas</a></li>
+                </ol>
+            </section>
+            <section class="content">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="box">
+                            <div class="box-header">
+                                <h3 class="box-title">Pagos de reservas por afiliados</h3>
+                                <hr />
+                            </div><!-- /.box-header -->
+                            <div class="box-body">
+
+                                
+
+                                @using (Html.BeginForm())
+                                {
+                                    @Html.AntiForgeryToken()
+
+                                    <div class="form-horizontal col-md-8 col-md-offset-2">
+                                        
+                                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.Monto, htmlAttributes: new { @class = "control-label col-md-2" })
+                                            <div class="col-md-10">
+                                                @Html.EditorFor(model => model.Monto, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.Monto, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="control-label col-md-4">Seleccione una tarjeta</label>
+                                            <div class="col-md-8">
+                                                @Html.DropDownListFor(model => model.Tarjeta.TarjetaUsuarioID, new SelectList(ViewBag.Tarjetas, "TarjetaUsuarioID", "NumeroTarjeta"), new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(model => model.Tarjeta.TarjetaUsuarioID, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-4">Comprobante Fiscal</label>
+                                            <div class="col-md-8">
+                                                @Html.DropDownListFor(model => model.Comprobante.ComprbanteFiscalID, new SelectList(ViewBag.cf, "TipoComprobanteID", "Nombre"), new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(model => model.Comprobante.ComprbanteFiscalID, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        @*<div class="form-group">
+                                            @Html.LabelFor(model => model.FechaHora, htmlAttributes: new { @class = "control-label col-md-2" })
+                                            <div class="col-md-10">
+                                                @Html.EditorFor(model => model.FechaHora, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.FechaHora, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>*@
+                                        @Html.EditorFor(model => model.Reserva.ReservaID, new { htmlAttributes = new { @Value = ViewBag.Reserva, @class = "hide" } })
+                                        @Html.EditorFor(model => model.Afiliado.AfiliadoID, new { htmlAttributes = new { @Value = ViewBag.AfiID, @class = "hide" } })
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <input type="submit" value="Crear" class="btn btn-primary pull-right" />
+                                                @Html.ActionLink("Volver al Listado", "ReservasUsuario","Reservas", new { id = @ViewBag.AfiID},null)
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+
+                                
+                            </div><!-- /.box-body -->
+                        </div><!-- /.box -->
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </section><!-- /.content -->
+        </div><!-- /.content-wrapper -->
+    </div>
+</div>
+
+
+@*Import Sidebar Right*@
+@Html.Partial("~/Views/Shared/_SidebarRight.cshtml")

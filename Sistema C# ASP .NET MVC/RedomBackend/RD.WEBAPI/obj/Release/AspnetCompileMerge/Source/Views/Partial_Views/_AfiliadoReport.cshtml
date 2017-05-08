@@ -1,0 +1,19 @@
+﻿@model RD.Data.Models.Afiliado
+
+@*Aca va tu html*@
+
+<div class="col-md-12">
+    <img class="center-block" src="ImageReport.png" alt="">
+</div>
+<div class="container">
+    <div class="form-horizontal">
+        <div class="row">
+            <div class="form-group">
+                <label class="control-label col-md-4"># DE TARJETA DEL SOCIO</label>
+                <div class="col-md-8">
+                    @Html.Raw(model => model.Afiliado.AfiliadoID)
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

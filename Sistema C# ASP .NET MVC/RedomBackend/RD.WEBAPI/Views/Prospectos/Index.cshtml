@@ -1,0 +1,112 @@
+﻿@model IEnumerable<RD.Data.Models.Prospecto>
+
+@{
+    ViewBag.Title = "Prospectos";
+}
+
+<div class="wrapper">
+
+    @Html.Partial("~/Views/Shared/_Header.cshtml")
+
+    @*Import Sidebar Left*@
+    @Html.Partial("~/Views/Shared/_SidebarLeft.cshtml")
+    <div class="wrapper">
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>
+                    Sistema de gestión
+                    <small>Prospectos</small>
+                </h1>
+                <ol class="breadcrumb">
+                    <li><a href="#"><i class="fa fa-newspaper-o"></i> Home</a></li>
+                    <li><a href="#">Prospectos</a></li>
+                </ol>
+            </section>
+            <section class="content">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="box">
+                            <div class="box-header">
+                                <h3 class="box-title">Prospectos Registrados</h3>
+                                <hr />
+                            </div><!-- /.bo x-header -->
+                            <div class="box-body">
+
+                                <p>
+                                    @Html.ActionLink("Crear Nuevo  ", "Create")
+                                <hr />
+                                </p>
+                                <table class="datatableUI table table-bordered table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                Nombre
+                                            </th>
+                                            
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.Cedula)
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.Respuesta)
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.Email)
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.Activo)
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.Afiliado)
+                                            </th>
+
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        @foreach (var item in Model)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Nombres) @Html.DisplayFor(modelItem => item.Apellido1) @Html.DisplayFor(modelItem => item.Apellido2)
+                                                </td>
+                                                
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Cedula)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Respuesta)
+                                                </td>
+
+                                                
+
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Email)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Activo)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Afiliado)
+                                                </td>
+                                                <td>
+                                                    @Html.ActionLink("Editar", "Edit", new { id = item.ProspectoID }) |
+                                                    @Html.ActionLink("Detalles", "Details", new { id = item.ProspectoID }) 
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div><!-- /.box-body -->
+                        </div><!-- /.box -->
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </section><!-- /.content -->
+        </div><!-- /.content-wrapper -->
+    </div>
+</div>
+
+
+@*Import Sidebar Right*@
+@Html.Partial("~/Views/Shared/_SidebarRight.cshtml")

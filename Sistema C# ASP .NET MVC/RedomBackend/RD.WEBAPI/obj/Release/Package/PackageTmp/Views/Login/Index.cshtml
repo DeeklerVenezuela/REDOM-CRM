@@ -1,0 +1,44 @@
+﻿@model RD.WEBAPI.Models.Login
+
+
+
+<div class="login-box">
+    <div class="login-logo">
+        <a href="#">Sistema de gestión</a>
+    </div><!-- /.login-logo -->
+    <div class="login-box-body">
+
+        <p class="login-box-msg text-center">
+            <img src="~/Images/logo.png" class="img-responsive" style="width:80%; margin-left:10%;" /><br />
+            Ingresa tus credenciales para iniciar sesión
+        </p>
+
+        @using (Html.BeginForm("ValidateLogin", "Login"))
+        {
+            @Html.AntiForgeryToken()
+            <div class="form-group has-feedback">
+                @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control", placeholder = "Usuario" } })
+                <span class="glyphicon glyphicon-user form-control-feedback"></span>
+            </div>
+            <div class="form-group has-feedback">
+                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", placeholder = "Contraseña", @type = "password" } })
+                <span class="glyphicon glyphicon-asterisk form-control-feedback"></span>
+            </div>
+            <div>
+                <button type="submit" class="btn btn-sm btn-block btn-primary">Aceptar</button>
+            </div>
+        }
+
+
+
+    </div><!-- /.login-box-body -->
+</div><!-- /.login-box -->
+<script>
+    $('document').ready(function () {
+        $('body').removeClass('sidebar-mini');
+        $('body').removeClass('skin blue');
+        $('body').removeClass('fixed');
+        $('body').addClass('hold-transition');
+        $('body').addClass('login-page');
+    })
+</script>

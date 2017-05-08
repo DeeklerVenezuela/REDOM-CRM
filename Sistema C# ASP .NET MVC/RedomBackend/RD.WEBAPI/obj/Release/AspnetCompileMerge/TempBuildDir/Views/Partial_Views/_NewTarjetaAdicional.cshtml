@@ -1,0 +1,60 @@
+﻿@model List<RD.Data.Models.TarjetaAdicional>
+
+@for (var i = 0; i < @ViewBag.Num; i++)
+{
+<div class="col-md-10 col-lg-offset-1">
+    <div class="form-group ">
+        <div class="box box-solid box-default">
+            <div class="box-header with-border">
+                <h3 class="box-title">tarjeta @(i+1)</h3>
+
+            </div> 
+            <div class="box-body">
+                <div class="tarjetasadicionalescontainer">
+
+                    <div class="email-con" id="ta_@(i)">
+
+                        <div class="row margin-bot">
+                            <div class="col-md-12">
+                                <div class="col-md-4">
+                                    <input class="form-control text-box single-line" id="tarjetasadicionales_@(i)__nombre" name="TarjetasAdicionales[@i].Nombre" placeholder="nombre" required="required" type="text" value="">
+                                </div>
+                                <div class="col-md-4">
+                                    <input class="form-control text-box single-line cedula-maskA" id="tarjetasadicionales_@(i)__cedula" name="TarjetasAdicionales[@i].Cedula" placeholder="cédula" required="required" type="text" value="">
+                                </div>
+                                <div class="col-md-4">
+                                    <input class="form-control text-box single-line" id="tarjetasadicionales_@(i)__email" name="TarjetasAdicionales[@i].Email" placeholder="EMAIL" required="required" type="email" value="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row margin-bot">
+                            <div class="col-md-12">
+                                <div class="col-md-4">
+                                    <input class="form-control text-box single-line telefono-maskA1" id="tarjetasadicionales_@(i)__telefono1" name="TarjetasAdicionales[@i].Telefono1" placeholder="teléfono 1" required="required" type="text" value="">
+                                </div>
+                                <div class="col-md-4">
+                                    <input class="form-control text-box single-line telefono-maskA2" id="tarjetasadicionales_@(i)__telefono2" name="TarjetasAdicionales[@i].Telefono2" placeholder="teléfono 2" required="required" type="text" value="">
+                                </div>
+                                <div class="col-md-4">
+                                    <input class="form-control text-box single-line" id="tarjetasadicionales_@(i)__cargo" name="TarjetasAdicionales[@i].Cargo" placeholder="Cargo" required="required" type="text" value="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row margin-bot">
+                            <div class="col-md-12">
+                                <div class="col-md-12">
+                                    <input class="form-control text-box single-line" id="tarjetasadicionales_@(i)__direccion" name="TarjetasAdicionales[@i].Direccion" placeholder="dirección" required="required" type="text" value="">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+</div>
+}

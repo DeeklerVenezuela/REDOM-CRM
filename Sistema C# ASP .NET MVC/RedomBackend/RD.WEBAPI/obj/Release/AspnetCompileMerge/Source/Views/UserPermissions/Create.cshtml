@@ -1,0 +1,577 @@
+﻿@model RD.Data.Models.UserPermision
+
+@{
+    ViewBag.Title = "Seguridad";
+}
+
+<div class="wrapper">
+
+    @Html.Partial("~/Views/Shared/_Header.cshtml")
+
+    @*Import Sidebar Left*@
+    @Html.Partial("~/Views/Shared/_SidebarLeft.cshtml")
+    <div class="wrapper">
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>
+                    Sistema de gestión
+                    <small>Seguridad</small>
+                </h1>
+                <ol class="breadcrumb">
+                    <li><a href="#"><i class="fa fa-newspaper-o"></i> Home</a></li>
+                    <li><a href="#">Seguridad</a></li>
+                </ol>
+            </section>
+            <section class="content">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="box">
+                            <div class="box-header">
+                                <h3 class="box-title">Editar seguridad de usuarios</h3>
+                                <hr />
+                            </div><!-- /.box-header -->
+                            <div class="box-body">
+
+                                @using (Html.BeginForm())
+                                {
+                                    @Html.AntiForgeryToken()
+
+                                    <div class="form-horizontal">
+                                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                        <div class="form-group" id="AfiliadosGroup">
+                                            @Html.LabelFor(model => model.Afiliados, htmlAttributes: new { @class = "control-label col-md-2" })
+                                            <div class="col-md-7">
+                                                <div class="col-md-6">
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox" class="chkPermisos chkR" data-group="AfiliadosGroup" data-module="Afiliados" id="Afiliados-chkR"> Ver Listado
+                                                        </label>
+                                                    </div>
+
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox" class="chkPermisos chkRE" data-group="AfiliadosGroup" data-module="Afiliados" id="Afiliados-chkRE"> Ver Detalles(Vista extendida)
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox" class="chkPermisos chkC" data-group="AfiliadosGroup" data-module="Afiliados" id="Afiliados-chkC"> Crear
+                                                        </label>
+                                                    </div>
+
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox" class="chkPermisos chkU" data-group="AfiliadosGroup" data-module="Afiliados" id="Afiliados-chkU"> Editar
+                                                        </label>
+                                                    </div>
+
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox" class="chkPermisos chkD" data-group="AfiliadosGroup" data-module="Afiliados" id="Afiliados-chkD"> Eliminar
+                                                        </label>
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+                                            <div class="col-md-3">
+                                                @Html.EditorFor(model => model.Afiliados, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.Afiliados, "", new { @class = "text-danger" })
+                                            </div>
+
+
+                                        </div>
+                                        <hr />
+                                        <div class="form-group" id="ArchivosGroup">
+                                            @Html.LabelFor(model => model.Archivos, htmlAttributes: new { @class = "control-label col-md-2" })
+                                            <div class="col-md-7">
+                                                <div class="col-md-6">
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox" class="chkPermisos chkR" data-group="ArchivosGroup" data-module="Archivos" id="Archivos-chkR"> Ver Listado
+                                                        </label>
+                                                    </div>
+
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox" class="chkPermisos chkC" data-group="ArchivosGroup" data-module="Archivos" id="Archivos-chkC"> Crear
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    
+
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox" class="chkPermisos chkU" data-group="ArchivosGroup" data-module="Archivos" id="Archivos-chkU"> Editar
+                                                        </label>
+                                                    </div>
+
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox" class="chkPermisos chkD" data-group="ArchivosGroup" data-module="Archivos" id="Archivos-chkD"> Eliminar
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                @Html.EditorFor(model => model.Archivos, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.Archivos, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <hr />
+
+                                        <div class="form-group" id="UsersGroup">
+                                            <label class = "control-label col-md-2">Usuarios</label>
+                                            <div class="col-md-7">
+                                                <div class="col-md-6">
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox" class="chkPermisos chkR" data-group="UsersGroup" data-module="Users" id="Users-chkR"> Ver Listado
+                                                        </label>
+                                                    </div>
+
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox" class="chkPermisos chkC" data-group="UsersGroup" data-module="Users" id="Users-chkC"> Crear
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+
+
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox" class="chkPermisos chkU" data-group="UsersGroup" data-module="Users" id="Users-chkU"> Editar
+                                                        </label>
+                                                    </div>
+
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox" class="chkPermisos chkD" data-group="UsersGroup" data-module="Users" id="Users-chkD"> Eliminar
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                @Html.EditorFor(model => model.Users, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.Users, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <hr />
+
+                                        <div class="form-group" id="EmpleadoesGroup">
+                                            <label class = "control-label col-md-2">Empleados</label>
+                                            <div class="col-md-7">
+                                                <div class="col-md-6">
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox" class="chkPermisos chkR" data-group="EmpleadoesGroup" data-module="Empleadoes" id="Empleadoes-chkR"> Ver Listado
+                                                        </label>
+                                                    </div>
+
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox" class="chkPermisos chkC" data-group="EmpleadoesGroup" data-module="Empleadoes" id="Empleadoes-chkC"> Crear
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+
+
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox" class="chkPermisos chkU" data-group="EmpleadoesGroup" data-module="Empleadoes" id="Empleadoes-chkU"> Editar
+                                                        </label>
+                                                    </div>
+
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox" class="chkPermisos chkD" data-group="EmpleadoesGroup" data-module="Empleadoes" id="Empleadoes-chkD"> Eliminar
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                @Html.EditorFor(model => model.Empleadoes, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.Empleadoes, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <hr />
+
+                                        <div class="form-group" id="DummyGroup">
+                                            @Html.LabelFor(model => model.Dummy, htmlAttributes: new { @class = "control-label col-md-2" })
+                                            <div class="col-md-7">
+                                                <div class="col-md-6">
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox" class="chkPermisos chkR" data-group="DummyGroup" data-module="Dummy" id="Dummy-chkR"> Ver Listado
+                                                        </label>
+                                                    </div>
+
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox" class="chkPermisos chkC" data-group="DummyGroup" data-module="Dummy" id="Dummy-chkC"> Crear
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+
+
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox" class="chkPermisos chkU" data-group="DummyGroup" data-module="Dummy" id="Dummy-chkU"> Editar
+                                                        </label>
+                                                    </div>
+
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox" class="chkPermisos chkD" data-group="DummyGroup" data-module="Dummy" id="Dummy-chkD"> Eliminar
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                @Html.EditorFor(model => model.Dummy, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.Dummy, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <hr />
+
+                                        <div class="form-group" id="MembresiasGroup">
+                                            @Html.LabelFor(model => model.Membresias, htmlAttributes: new { @class = "control-label col-md-2" })
+                                            <div class="col-md-7">
+                                                <div class="col-md-6">
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox" class="chkPermisos chkR" data-group="MembresiasGroup" data-module="Membresias" id="Membresias-chkR"> Ver Listado
+                                                        </label>
+                                                    </div>
+
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox" class="chkPermisos chkC" data-group="MembresiasGroup" data-module="Membresias" id="Membresias-chkC"> Crear
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+
+
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox" class="chkPermisos chkU" data-group="MembresiasGroup" data-module="Membresias" id="Membresias-chkU"> Editar
+                                                        </label>
+                                                    </div>
+
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox" class="chkPermisos chkD" data-group="MembresiasGroup" data-module="Membresias" id="Membresias-chkD"> Eliminar
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                @Html.EditorFor(model => model.Membresias, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.Membresias, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <hr />
+
+                                        <div class="form-group" id="CobrosGroup">
+                                            @Html.LabelFor(model => model.Cobros, htmlAttributes: new { @class = "control-label col-md-2" })
+                                            <div class="col-md-7">
+                                                <div class="col-md-6">
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox" class="chkPermisos chkR" data-group="CobrosGroup" data-module="Cobros" id="Cobros-chkR"> Ver Listado
+                                                        </label>
+                                                    </div>
+
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox" class="chkPermisos chkC" data-group="CobrosGroup" data-module="Cobros" id="Cobros-chkC"> Crear
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+
+
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox" class="chkPermisos chkU" data-group="CobrosGroup" data-module="Cobros" id="Cobros-chkU"> Editar
+                                                        </label>
+                                                    </div>
+
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox" class="chkPermisos chkD" data-group="CobrosGroup" data-module="Cobros" id="Cobros-chkD"> Eliminar
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                @Html.EditorFor(model => model.Cobros, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.Cobros, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <hr />
+
+                                        <div class="form-group" id="ProspectosGroup">
+                                            @Html.LabelFor(model => model.Prospectos, htmlAttributes: new { @class = "control-label col-md-2" })
+                                            <div class="col-md-7">
+                                                <div class="col-md-6">
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox" class="chkPermisos chkR" data-group="ProspectosGroup" data-module="Prospectos" id="Prospectos-chkR"> Ver Listado
+                                                        </label>
+                                                    </div>
+
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox" class="chkPermisos chkC" data-group="ProspectosGroup" data-module="Prospectos" id="Prospectos-chkC"> Crear
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+
+
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox" class="chkPermisos chkU" data-group="ProspectosGroup" data-module="Prospectos" id="Prospectos-chkU"> Editar
+                                                        </label>
+                                                    </div>
+
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox" class="chkPermisos chkD" data-group="ProspectosGroup" data-module="Prospectos" id="Prospectos-chkD"> Eliminar
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                @Html.EditorFor(model => model.Prospectos, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.Prospectos, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <hr />
+
+                                        <div class="form-group" id="ReservasGroup">
+                                            @Html.LabelFor(model => model.Reservas, htmlAttributes: new { @class = "control-label col-md-2" })
+                                            <div class="col-md-7">
+                                                <div class="col-md-6">
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox" class="chkPermisos chkR" data-group="ReservasGroup" data-module="Reservas" id="Reservas-chkR"> Ver Listado
+                                                        </label>
+                                                    </div>
+
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox" class="chkPermisos chkC" data-group="ReservasGroup" data-module="Reservas" id="Reservas-chkC"> Crear
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+
+
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox" class="chkPermisos chkU" data-group="ReservasGroup" data-module="Reservas" id="Reservas-chkU"> Editar
+                                                        </label>
+                                                    </div>
+
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox" class="chkPermisos chkD" data-group="ReservasGroup" data-module="Reservas" id="Reservas-chkD"> Eliminar
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                @Html.EditorFor(model => model.Reservas, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.Reservas, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <hr />
+
+                                        <div class="form-group" id="PermisosGroup">
+                                            @Html.LabelFor(model => model.Permisos, htmlAttributes: new { @class = "control-label col-md-2" })
+                                            <div class="col-md-7">
+                                                <div class="col-md-6">
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox" class="chkPermisos chkR" data-group="PermisosGroup" data-module="Permisos" id="Permisos-chkR"> Ver Listado
+                                                        </label>
+                                                    </div>
+
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox" class="chkPermisos chkC" data-group="PermisosGroup" data-module="Permisos" id="Permisos-chkC"> Crear
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+
+
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox" class="chkPermisos chkU" data-group="PermisosGroup" data-module="Permisos" id="Permisos-chkU"> Editar
+                                                        </label>
+                                                    </div>
+
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox" class="chkPermisos chkD" data-group="PermisosGroup" data-module="Permisos" id="Permisos-chkD"> Eliminar
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                @Html.EditorFor(model => model.Permisos, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.Permisos, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <hr />
+
+                                        <div class="form-group" id="ReportesGroup">
+                                            @Html.LabelFor(model => model.Reportes, htmlAttributes: new { @class = "control-label col-md-2" })
+                                            <div class="col-md-7">
+                                                <div class="col-md-6">
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox" class="chkPermisos chkR" data-group="ReportesGroup" data-module="Reportes" id="Reportes-chkR"> Ver Listado
+                                                        </label>
+                                                    </div>
+
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox" class="chkPermisos chkC" data-group="ReportesGroup" data-module="Reportes" id="Reportes-chkC"> Crear
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+
+
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox" class="chkPermisos chkU" data-group="ReportesGroup" data-module="Reportes" id="Reportes-chkU"> Editar
+                                                        </label>
+                                                    </div>
+
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox" class="chkPermisos chkD" data-group="ReportesGroup" data-module="Reportes" id="Reportes-chkD"> Eliminar
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                @Html.EditorFor(model => model.Reportes, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.Reportes, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <hr />
+
+                                        <div class="form-group" id="DocumentacionGroup">
+                                            <label class = "control-label col-md-2" >Documentación</label>
+                                            <div class="col-md-7">
+                                                <div class="col-md-6">
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox" class="chkPermisos chkR" data-group="DocumentacionGroup" data-module="Documentacion" id="Documentacion-chkR"> Ver Listado
+                                                        </label>
+                                                    </div>
+
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox" class="chkPermisos chkC" data-group="DocumentacionGroup" data-module="Documentacion" id="Documentacion-chkC"> Crear
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+
+
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox" class="chkPermisos chkU" data-group="DocumentacionGroup" data-module="Documentacion" id="Documentacion-chkU"> Editar
+                                                        </label>
+                                                    </div>
+
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox" class="chkPermisos chkD" data-group="DocumentacionGroup" data-module="Documentacion" id="Documentacion-chkD"> Eliminar
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-3">
+                                                @Html.EditorFor(model => model.Documentacion, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.Documentacion, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <hr />
+
+
+                                        <div class="form-group" id="NCFGroup">
+                                            @Html.LabelFor(model => model.NCF, htmlAttributes: new { @class = "control-label col-md-2" })
+                                            <div class="col-md-7">
+                                                <div class="col-md-6">
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox" class="chkPermisos chkR" data-group="NCFGroup" data-module="NCF" id="NCF-chkR"> Ver Listado
+                                                        </label>
+                                                    </div>
+
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox" class="chkPermisos chkC" data-group="NCFGroup" data-module="NCF" id="NCF-chkC"> Crear
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+
+
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox" class="chkPermisos chkU" data-group="NCFGroup" data-module="NCF" id="NCF-chkU"> Editar
+                                                        </label>
+                                                    </div>
+
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox" class="chkPermisos chkD" data-group="NCFGroup" data-module="NCF" id="NCF-chkD"> Eliminar
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-3">
+                                                @Html.EditorFor(model => model.NCF, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.NCF, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <hr />
+
+                                        <div class="form-group">
+                                            <div class=" col-md-12">
+                                                <input type="submit" value="Guardar" class="btn btn-primary pull-right" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+
+                                <div>
+                                    
+                                </div>
+                            </div><!-- /.box-body -->
+                        </div><!-- /.box -->
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </section><!-- /.content -->
+        </div><!-- /.content-wrapper -->
+    </div>
+</div>

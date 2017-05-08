@@ -1,0 +1,59 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RD.Business", "RD.Business\RD.Business.csproj", "{D86542EC-4B76-43A7-B972-C93AF261D4D5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RD.Data", "RD.Data\RD.Data.csproj", "{E946F743-ECE9-4A8C-8C9D-BDCEA7C5D7F3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RD.Repository", "RD.Repository\RD.Repository.csproj", "{57AC8073-4C1A-4108-8008-C688BC7CB309}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RD.WEBAPI", "RD.WEBAPI\RD.WEBAPI.csproj", "{795F38DE-1DAF-4DEA-A8D0-62B84E4CAEFB}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 5
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://redom.visualstudio.com/defaultcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = RD.Business\\RD.Business.csproj
+		SccProjectName1 = RD.Business
+		SccLocalPath1 = RD.Business
+		SccProjectUniqueName2 = RD.Data\\RD.Data.csproj
+		SccProjectName2 = RD.Data
+		SccLocalPath2 = RD.Data
+		SccProjectUniqueName3 = RD.Repository\\RD.Repository.csproj
+		SccProjectName3 = RD.Repository
+		SccLocalPath3 = RD.Repository
+		SccProjectUniqueName4 = RD.WEBAPI\\RD.WEBAPI.csproj
+		SccProjectName4 = RD.WEBAPI
+		SccLocalPath4 = RD.WEBAPI
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D86542EC-4B76-43A7-B972-C93AF261D4D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D86542EC-4B76-43A7-B972-C93AF261D4D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D86542EC-4B76-43A7-B972-C93AF261D4D5}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{D86542EC-4B76-43A7-B972-C93AF261D4D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D86542EC-4B76-43A7-B972-C93AF261D4D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E946F743-ECE9-4A8C-8C9D-BDCEA7C5D7F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E946F743-ECE9-4A8C-8C9D-BDCEA7C5D7F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E946F743-ECE9-4A8C-8C9D-BDCEA7C5D7F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E946F743-ECE9-4A8C-8C9D-BDCEA7C5D7F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{57AC8073-4C1A-4108-8008-C688BC7CB309}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57AC8073-4C1A-4108-8008-C688BC7CB309}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57AC8073-4C1A-4108-8008-C688BC7CB309}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57AC8073-4C1A-4108-8008-C688BC7CB309}.Release|Any CPU.Build.0 = Release|Any CPU
+		{795F38DE-1DAF-4DEA-A8D0-62B84E4CAEFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{795F38DE-1DAF-4DEA-A8D0-62B84E4CAEFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{795F38DE-1DAF-4DEA-A8D0-62B84E4CAEFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{795F38DE-1DAF-4DEA-A8D0-62B84E4CAEFB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

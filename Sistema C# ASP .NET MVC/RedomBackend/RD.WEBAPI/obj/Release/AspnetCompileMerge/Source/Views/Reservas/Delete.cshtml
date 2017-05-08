@@ -1,0 +1,103 @@
+﻿@model RD.Data.Models.Reserva
+
+@{
+    ViewBag.Title = "Reservas";
+}
+
+<div class="wrapper">
+
+    @Html.Partial("~/Views/Shared/_Header.cshtml")
+
+    @Html.Partial("~/Views/Shared/_SidebarLeft.cshtml")
+    <div class="wrapper">
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>
+                    Sistema de gestión
+                    <small>Reservas</small>
+                </h1>
+                <ol class="breadcrumb">
+                    <li><a href="#"><i class="fa fa-newspaper-o"></i> Home</a></li>
+                    <li><a href="#">Reservas</a></li>
+                </ol>
+            </section>
+            <section class="content">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="box">
+                            <div class="box-header">
+                                <h3 class="box-title">Reservas de hoteles</h3>
+                                <hr />
+                            </div><!-- /.box-header -->
+                            <div class="box-body">
+
+                                <h3>Are you sure you want to delete this?</h3>
+                                <div>
+                                    <h4>Reserva</h4>
+                                    <hr />
+                                    <dl class="dl-horizontal">
+                                        <dt>
+                                            @Html.DisplayNameFor(model => model.FechaHora)
+                                        </dt>
+
+                                        <dd>
+                                            @Html.DisplayFor(model => model.FechaHora)
+                                        </dd>
+
+                                        <dt>
+                                            @Html.DisplayNameFor(model => model.Costo)
+                                        </dt>
+
+                                        <dd>
+                                            @Html.DisplayFor(model => model.Costo)
+                                        </dd>
+
+                                        <dt>
+                                            @Html.DisplayNameFor(model => model.Status)
+                                        </dt>
+
+                                        <dd>
+                                            @Html.DisplayFor(model => model.Status)
+                                        </dd>
+
+                                        <dt>
+                                            @Html.DisplayNameFor(model => model.CantidadAdultos)
+                                        </dt>
+
+                                        <dd>
+                                            @Html.DisplayFor(model => model.CantidadAdultos)
+                                        </dd>
+
+                                        <dt>
+                                            @Html.DisplayNameFor(model => model.CantidadNinios)
+                                        </dt>
+
+                                        <dd>
+                                            @Html.DisplayFor(model => model.CantidadNinios)
+                                        </dd>
+
+                                    </dl>
+
+                                    @using (Html.BeginForm())
+                                    {
+                                        @Html.AntiForgeryToken()
+
+                                        <div class="form-actions no-color">
+                                            <input type="submit" value="Delete" class="btn btn-primary" /> |
+                                            @Html.ActionLink("Back to List", "ReservasUsuario", new { id = @Model.Afiliado.AfiliadoID })
+                                        </div>
+                                    }
+                                </div>
+                            </div><!-- /.box-body -->
+                        </div><!-- /.box -->
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </section><!-- /.content -->
+        </div><!-- /.content-wrapper -->
+    </div>
+</div>
+
+
+@*Import Sidebar Right*@
+@Html.Partial("~/Views/Shared/_SidebarRight.cshtml")

@@ -1,0 +1,125 @@
+﻿@model IEnumerable<RD.Data.Models.Gasto>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Concepto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Observaciones)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaPago)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.cedula)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaComprobante)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItbisFacturado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItbisRetenido)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MontoFacturado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RetencionRenta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TipoBienesServicios)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NCF)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TipoId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DocumentoModificado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.status)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Concepto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Observaciones)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaPago)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cedula)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaComprobante)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItbisFacturado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItbisRetenido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MontoFacturado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RetencionRenta)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TipoBienesServicios)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NCF)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TipoId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DocumentoModificado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.status)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.GastoID }) |
+                @Html.ActionLink("Details", "Details", new { id=item.GastoID }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.GastoID })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

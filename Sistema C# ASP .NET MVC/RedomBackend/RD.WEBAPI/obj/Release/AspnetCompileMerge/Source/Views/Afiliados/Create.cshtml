@@ -1,0 +1,624 @@
+﻿@model RD.WEBAPI.Models.AfiliadosViewModel
+@{HtmlHelper.UnobtrusiveJavaScriptEnabled = true;}
+
+@{
+    ViewBag.Title = "Afiliados";
+}
+
+
+
+<div class="modal" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title">Necesita permisos para llevar a cabo esta operación</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-horizontal">
+                    <div class="row">
+                        <div class="col-md-6 col-md-offset-3">
+                            <div class="form-group ">
+                                <label class="control-label col-md-3">Usuario</label>
+                                <div class="col-md-9">
+                                    <input class="form-control text-box single-line" id="autoriza_user" required="required" type="text" value="">
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label class="control-label col-md-3">Contraseña</label>
+                                <div class="col-md-9">
+                                    <input class="form-control text-box single-line" id="autoriza_pass" required="required" type="password" value="">
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label class="control-label col-md-7">Cantidad de meses</label>
+                                <div class="col-md-5">
+                                    <input class="form-control text-box single-line" id="autoriza_cant" required="required" type="number" value="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" id="AcceptMonth">Aceptar</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+
+
+
+
+
+
+<div class="wrapper">
+
+    @Html.Partial("~/Views/Shared/_Header.cshtml")
+
+    @Html.Partial("~/Views/Shared/_SidebarLeft.cshtml")
+    <div class="wrapper">
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>
+                    Sistema de gestión
+                    <small>Afiliados</small>
+                </h1>
+                <ol class="breadcrumb">
+                    <li><a href="#"><i class="fa fa-newspaper-o"></i> Home</a></li>
+                    <li><a href="#">Afiliados</a></li>
+                </ol>
+            </section>
+            <section class="content">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="box">
+                            <div class="box-header">
+                                <h3 class="box-title">Datos de Afiliado</h3>
+                                <hr />
+                            </div><!-- /.box-header -->
+                            <div class="box-body">
+
+                                @using (Html.BeginForm("Crear", "Afiliados", FormMethod.Post))
+                                {
+
+                                    
+                                    
+                                    @Html.AntiForgeryToken()
+
+                                    <div class="form-horizontal">
+
+                                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                                        <div class="modal" id="TarjetaAdicionalModal">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">×</span>
+                                                        </button>
+                                                        <h4 class="modal-title">Necesita permisos para llevar a cabo esta operación</h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="form-horizontal">
+                                                            <div class="row">
+                                                                <div class="col-md-6 col-md-offset-3">
+                                                                    <div class="form-group ">
+                                                                        <label class="control-label col-md-3">Usuario</label>
+                                                                        <div class="col-md-9">
+                                                                            <input class="form-control text-box single-line" id="autoriza_userTar" name="nameUser" type="text" value="">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group ">
+                                                                        <label class="control-label col-md-3">Contraseña</label>
+                                                                        <div class="col-md-9">
+                                                                            <input class="form-control text-box single-line" id="autoriza_passTar" name="passUser" type="password" value="">
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+
+                                                                <div class="col-md-12 ">
+                                                                    <div class="form-group" id="TarjetasAdicionalesContainer">
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-default pull-left" id="TarAddModalCloseBtn">Cancelar</button>
+                                                        <button type="button" class="btn btn-primary " id="TarAddModalOkBtn">Aceptar</button>
+                                                    </div>
+                                                </div>
+                                                <!-- /.modal-content -->
+                                            </div>
+                                            <!-- /.modal-dialog -->
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-4 col-lg-4 col-xs-12 col-sm-12">
+
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-3">ID</label>
+                                                    <div class="col-md-4 IDCreateAfiliado"> 7777 - 2552 -</div>
+                                                    <div class="col-md-5">
+                                                        <input type="text" class="form-control id-mask" id="id-helper"/>
+                                                        @Html.HiddenFor(model => model.Afiliado.AfiliadoIndice)
+                                                        @Html.ValidationMessageFor(model => model.Afiliado.AfiliadoIndice, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group ">
+                                                    <label class="control-label col-md-3">Cédula</label>
+                                                    <div class="col-md-9">
+                                                        @Html.EditorFor(model => model.Afiliado.Cedula, new { htmlAttributes = new { @class = "form-control cedula-mask", @required = "required" } })
+                                                        @Html.ValidationMessageFor(model => model.Afiliado.Cedula, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    @Html.LabelFor(model => model.Afiliado.Pasaporte, htmlAttributes: new { @class = "control-label col-md-3" })
+                                                    <div class="col-md-9">
+                                                        @Html.EditorFor(model => model.Afiliado.Pasaporte, new { htmlAttributes = new { @class = "form-control pasaporte-mask" } })
+                                                        @Html.ValidationMessageFor(model => model.Afiliado.Pasaporte, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+
+                                                
+                                                <div class="form-group">
+                                                    @Html.LabelFor(model => model.Afiliado.Nombres, htmlAttributes: new { @class = "control-label col-md-3" })
+                                                    <div class="col-md-9">
+                                                        @Html.EditorFor(model => model.Afiliado.Nombres, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
+                                                        @Html.ValidationMessageFor(model => model.Afiliado.Nombres, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+                                                
+                                        
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-5">Primer Apellido</label>
+                                                    <div class="col-md-7">
+                                                        @Html.EditorFor(model => model.Afiliado.Apellido1, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
+                                                        @Html.ValidationMessageFor(model => model.Afiliado.Apellido1, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-5">Segundo Apellido</label>
+                                                    <div class="col-md-7">
+                                                        @Html.EditorFor(model => model.Afiliado.Apellido2, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
+                                                        @Html.ValidationMessageFor(model => model.Afiliado.Apellido2, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+
+                                                
+                                                
+
+
+                                            </div>
+
+                                            <div class="col-md-4 col-lg-4 col-xs-12 col-sm-12">
+
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-4">Razón Social</label>
+                                                    <div class="col-md-8">
+                                                        @Html.EditorFor(model => model.Afiliado.RazonSocial, new { htmlAttributes = new { @class = "form-control" } })
+                                                        @Html.ValidationMessageFor(model => model.Afiliado.RazonSocial, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    @Html.LabelFor(model => model.Afiliado.RNC, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                    <div class="col-md-10">
+                                                        @Html.EditorFor(model => model.Afiliado.RNC, new { htmlAttributes = new { @class = "form-control rnc-mask", @required = "required" } })
+                                                        @Html.ValidationMessageFor(model => model.Afiliado.RNC, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+
+
+
+
+
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-3">Cumpleaños</label>
+                                                    <div class="col-md-9">
+                                                        @*@Html.EditorFor(model => model.Cumpleanio, new { htmlAttributes = new { @class = "form-control" } })*@
+                                                        
+                                                        <div class='input-group date datepickershortday'>
+                                                            @Html.EditorFor(model => model.Afiliado.Cumpleanio, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
+                                                            <span class="input-group-addon add-on">
+                                                                
+                                                                <span class="glyphicon glyphicon-calendar">
+                                                                </span>
+                                                            </span>
+                                                        </div>
+                                                        @Html.ValidationMessageFor(model => model.Afiliado.Cumpleanio, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+
+                                              
+
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-4">Membresía</label>
+                                                    <div class="col-md-8">
+
+                                                        @Html.DropDownListFor(model => model.Afiliado.CostoMembresia, new SelectList(@ViewBag.Membresias, "MembresiaID", "Nombre"), new { @class = "form-control",@required = "required"})
+                                                        @*@Html.EditorFor(model => model.Afiliado.CostoMembresia, new { htmlAttributes = new { @class = "form-control", @required = "required" } })*@
+                                                        @Html.ValidationMessageFor(model => model.Afiliado.CostoMembresia, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+
+                                                @*<div class="form-group">
+                                                    <label class="control-label col-md-6">Fecha de Vencimiento</label>
+                                                    <div class="col-md-6">
+                                                        <div class='input-group'>
+                                                            @Html.EditorFor(model => model.Afiliado.FechaVencimiento, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled", @required = "required" } })
+
+                                                        </div>
+
+                                                        @Html.ValidationMessageFor(model => model.Afiliado.FechaVencimiento, "", new { @class = "text-danger", @required = "required" })
+                                                    </div>
+                                                </div>*@
+
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-5">Fecha de registro</label>
+                                                    <div class="col-md-7">
+                                                        @Html.EditorFor(model => model.Afiliado.FechaHora, new { htmlAttributes = new { @class = "form-control", disabled = "disabled", id = "CurDate" } })
+                                                        @Html.ValidationMessageFor(model => model.Afiliado.FechaHora, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    @Html.LabelFor(model => model.Afiliado.Status, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                    <div class="col-md-10">
+                                                        @Html.DropDownListFor(model => model.Afiliado.Status, new SelectList(@ViewBag.Estados, "Estado", "Estado"), new { @class = "form-control", @required = "required" })
+                                                        @*@Html.EditorFor(model => model.Afiliado.Status, new { htmlAttributes = new { @class = "form-control", @required = "required" } })*@
+                                                        @Html.ValidationMessageFor(model => model.Afiliado.Status, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="col-md-4 col-lg-4 col-xs-12 col-sm-12">
+
+
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-4">Usuario Bienvenida</label>
+                                                    <div class="col-md-8">
+                                                        @Html.DropDownListFor(model => model.Afiliado.UsuarioBienvenida.EmpleadoID, new SelectList(@ViewBag.UsersWelcome, "EmpleadoID", "Nombres"), new { @class = "form-control", @required = "required" })
+                                                        @Html.ValidationMessageFor(model => model.Afiliado.UsuarioBienvenida, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    @Html.LabelFor(model => model.Afiliado.Observaciones, htmlAttributes: new { @class = "control-label col-md-4" })
+                                                    <div class="col-md-8">
+                                                        @Html.TextAreaFor(model => model.Afiliado.Observaciones, new { @class = "form-control", @rows = "5", @placeholder = "Max: 255 caracteres..." })
+                                                        @Html.ValidationMessageFor(model => model.Afiliado.Observaciones, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <div class="col-md-7">
+                                                        <div class="checkbox-inline">
+                                                            <label class="control-label">
+                                                                @Html.EditorFor(model => model.Afiliado.MesesAdicionales, new { @class = "chkmesadd" }) Meses Adicionales?
+                                                                @Html.ValidationMessageFor(model => model.Afiliado.MesesAdicionales, "", new { @class = "text-danger" })
+                                                            </label>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        @Html.EditorFor(model => model.Afiliado.MesAdicionalCan, new { htmlAttributes = new { @class = "txtmesadd form-control col-md-12", @required = "required", @type = "number", @min = "0", @max = ViewBag.MesesAdicionales } })
+                                                    </div>
+                                                    <div class="col-md-1">
+
+
+                                                        <span data-toggle="modal" data-target="#myModal" class="mes-permission-btn top-special-span glyphicon glyphicon-plus" aria-hidden="true"></span>
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <div class="col-md-7">
+                                                        <div class="checkbox-inline">
+                                                            <label class="control-label">
+                                                                @Html.EditorFor(model => model.Afiliado.TarjetaAdicional, new { @class = "chktaradd" }) Tarjetas adicionales?
+                                                                @Html.ValidationMessageFor(model => model.Afiliado.TarjetaAdicional, "", new { @class = "text-danger" })
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        @Html.EditorFor(model => model.Afiliado.TarjetaAdicionalCan, new { htmlAttributes = new { @class = "txttaradd form-control col-md-12", @required = "required", @type = "number", @min="0", @max=ViewBag.TarjetasAdicionales } })
+                                                    </div>
+                                                    <div class="col-md-1">
+                                                        <span onclick="ShowTarjetasAdicionalesModal($('.txttaradd').val())" @*data-toggle="modal" data-target="#TarjetaAdicionalModal"*@ class="tar-permission-btn top-special-span glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                        </div>@*row*@
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="box box-solid box-default">
+                                                    <div class="box-header with-border">
+                                                        <h3 class="box-title">Emails</h3>
+                                                        <div class="box-tools pull-right">
+                                                            <button id="newEmailsBtn" class="btn btn-box-tool" data-toggle="tooltip" title="Agregar otro email" data-widget="chat-pane-toggle"><i class="glyphicon glyphicon-plus"></i></button>
+                                                        </div><!-- /.box-tools -->
+                                                    </div><!-- /.box-header -->
+                                                    <div class="box-body">
+                                                        <div id="emails-container">
+
+
+                                                            @for (var item = 0; item < Model.Emails.Count; item++)
+                                                            {
+
+                                                                <div class="form-group email-con" id="email_@(item)">
+
+                                                                    <label class="control-label col-md-2">
+                                                                        Email
+                                                                    </label>
+
+                                                                    <div class="col-md-8">
+                                                                        <div class='input-group col-md-12'>
+                                                                           
+                                                                       @Html.EditorFor(model => model.Emails[item].Email, new { htmlAttributes = new { @class = "form-control",@type="email",@require="require",@placeholder="Ej: alguien@dominio.com" } })
+                                                                         </div>
+                                                                        @Html.ValidationMessageFor(model => model.Emails[item].Email, "", new { @class = "text-danger" })
+                                                                    </div>
+                                                                    <div class="col-md-1">
+                                                                        
+                                                                        <button class="btn btn-danger btn-sm" onclick="$('#email_@(item)').remove(); $('#Emails_@(item)__Email').val(''); $('#Emails_@(item)__Email').removeAttr('required'); return false;"><span class="glyphicon glyphicon-trash"></span></button>
+                                                                    </div>
+
+                                                                </div>
+                                                            }
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <div class="box box-solid box-default">
+                                                    <div class="box-header with-border">
+                                                        <h3 class="box-title">Direcciones</h3>
+                                                        <div class="box-tools pull-right">
+                                                            <button id="newDireccionBtn" class="btn btn-box-tool" data-toggle="tooltip" title="Agregar otra dirección" data-widget="chat-pane-toggle"><i class="glyphicon glyphicon-plus"></i></button>
+                                                        </div><!-- /.box-tools -->
+                                                    </div><!-- /.box-header -->
+                                                    <div class="box-body">
+
+                                                        <div id="direcciones-container">
+                                                            @for (var item = 0; item < Model.Direcciones.Count; item++)
+                                                            {
+                                                                <div class="form-group dir-con" id="direccion_@item">
+
+                                                                    <label class="control-label col-md-2">Dirección</label>
+                                                                    <div class="col-md-8">
+                                                                        @Html.TextAreaFor(model => model.Direcciones[item].Descripcion, new { @class = "form-control", @required = "required", @rows = "2" })
+                                                                        @Html.ValidationMessageFor(model => model.Direcciones[item].Tipo, "", new { @class = "text-danger" })
+                                                                    </div>
+                                                                    <div class="col-md-1">
+                                                                        <button class="btn btn-danger btn-sm" onclick="$('#direccion_@(item)').remove(); $('#Direcciones_@(item)__Descripcion').val(''); $('#Direcciones_@(item)__Descripcion').removeAttr('required'); return false;"><span class="glyphicon glyphicon-trash"></span></button>
+                                                                    </div>
+                                                                </div>
+                                                            }
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+
+                                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                                <div class="box box-solid box-default">
+                                                    <div class="box-header with-border">
+                                                        <h3 class="box-title">Teléfonos</h3>
+                                                        <div class="box-tools pull-right">
+                                                            <button id="newTelefonoBtn" class="btn btn-box-tool" data-toggle="tooltip" title="Agregar otro teléfono" data-widget="chat-pane-toggle"><i class="glyphicon glyphicon-plus"></i></button>
+                                                        </div><!-- /.box-tools -->
+                                                    </div><!-- /.box-header -->
+                                                    <div class="box-body">
+                                                        <div id="telefonos-container">
+                                                            @for (var item = 0; item < Model.Telefonos.Count; item++)
+                                                            {
+                                                                <div class="form-group tel-con" id="telefono_@(item)">
+                                                                    <label class="control-label col-md-2">Teléfono</label>
+                                                                    <div class="col-md-3">
+                                                                        @{
+                                                                            var selected = Model.Telefonos[item].Tipo;
+                                                                        }
+                                                                        @Html.DropDownListFor(model => model.Telefonos[item].Tipo, new SelectList(@ViewBag.TipoTel,"Value","Text",selected), new { @class = "form-control tel-"+item , @onchange = "Javascript:manageExt("+item+");" })
+                                                                    </div>
+                                                                    <div class="col-md-2">
+                                                                        @{
+                                                                
+                                                                if (Model.Telefonos[item].Tipo == "OFICINA")
+                                                                {
+                                                                    @Html.EditorFor(model => model.Telefonos[item].Extension, new { htmlAttributes = new { @class = "form-control tel-" + item + "-ext", @type = "number"} })
+                                                                }
+                                                                else
+                                                                {
+                                                                    @Html.EditorFor(model => model.Telefonos[item].Extension, new { htmlAttributes = new { @class = "form-control tel-" + item + "-ext", @type = "number", @disabled = "disabled" } })
+                                                                }
+}
+                                                                        
+                                                                    </div>
+                                                                    <div class="col-md-4">
+                                                                        
+                                                                        @Html.EditorFor(model => model.Telefonos[item].Descripcion, new { htmlAttributes = new { @class = "form-control telefono-mask", @required = "required" } })
+                                                                        @Html.ValidationMessageFor(model => model.Telefonos[item].Tipo, "", new { @class = "text-danger" })
+                                                                    </div>
+                                                                    <div class="col-md-1">
+                                                                        <button class="btn btn-danger btn-sm" onclick="$('#telefono_@(item)').remove(); $('Telefonos_@(item)__Descripcion').val(''); $('Telefonos_@(item)__Descripcion').removeAttr('required'); return false;"><span class="glyphicon glyphicon-trash"></span></button>
+                                                                    </div>
+                                                                </div>
+                                                            }
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                        </div> @*row*@
+
+                                        <div class="row">
+                                            <div class="col-md-12">
+
+                                                <div class="box box-solid box-default">
+                                                    <div class="box-header with-border">
+
+                                                        <h3 class="box-title">Tarjetas</h3>
+                                                        <div class="box-tools pull-right">
+
+                                                            <button id="newTarjetaBtn" class="btn btn-box-tool" data-toggle="tooltip" title="Agregar otro teléfono" data-widget="chat-pane-toggle"><i class="glyphicon glyphicon-plus"></i></button>
+                                                        </div><!-- /.box-tools -->
+                                                    </div><!-- /.box-header -->
+                                                    <div class="box-body">
+                                                        <div id="tarjetas-container">
+
+                                                            @for (var item = 0; item < Model.Tarjetas.Count; item++)
+                                                            {
+
+                                                                <div class="form-group tar-con" id="tarjeta_0">
+
+                                                                    <label class="control-label col-md-1">
+                                                                        Tarjeta
+
+                                                                    </label>
+                                                                    <div class="col-md-2">
+                                                                        @Html.DropDownListFor(model => model.Tarjetas[item].Banco, new SelectList(@ViewBag.Bancos, "Nombre", "Nombre"), new { @class = "form-control",@required="required" })
+                                                                    </div>
+                                                                    <div class="col-md-2">
+                                                                        @Html.DropDownListFor(model => model.Tarjetas[item].Tipo, new SelectList(@ViewBag.Tarjetas, "Nombre", "Nombre"), new { @class = "form-control" })
+                                                                    </div>
+                                                                    <div class="col-md-3">
+                                                                        @Html.EditorFor(model => model.Tarjetas[item].NumeroTarjeta, new { htmlAttributes = new { @class = "form-control tarjeta-mask", @required = "required" } })
+                                                                        @Html.ValidationMessageFor(model => model.Tarjetas[item].NumeroTarjeta, "", new { @class = "text-danger" })
+                                                                    </div>
+
+
+
+
+
+                                                                    <div class="col-md-1">
+                                                                        <label class="control-label text-right">
+                                                                            Expira
+                                                                        </label>
+                                                                    </div>
+                                                                    
+                                                                    <div class="col-md-2">
+                                                                        <div class='input-group date datepickershort'>
+                                                                            <input id="@Html.Raw("Tarjetas_"+item+"__FechaVencimiento")" class="form-control" required ="required" name="@Html.Raw("Tarjetas["+item+"].FechaVencimiento")"/>
+                                                                            @*Html.EditorFor(model => model.Tarjetas[item].FechaVencimiento, new { htmlAttributes = new { @class = "form-control", @required = "required", @placeholder = "Fecha de vencimiento" } })*@
+                                                                            <span class="input-group-addon add-on">
+                                                                                <span class="glyphicon glyphicon-calendar">
+                                                                                </span>
+                                                                            </span>
+                                                                        </div>
+                                                                        @Html.ValidationMessageFor(model => model.Tarjetas[item].FechaVencimiento, "", new { @class = "text-danger" })
+                                                                    </div>
+                                                                    <div class="col-md-1">
+                                                                        <button class="btn btn-danger btn-sm hide-tar" id="0"><span class="glyphicon glyphicon-trash"></span></button>
+                                                                    </div>
+
+                                                                </div>
+                                                            }
+
+
+
+
+                                                           
+
+
+
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <hr />
+                                        </div>@*row*@
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="box box-solid box-default">
+                                                    <div class="box-header with-border">
+
+                                                        <h3 class="box-title">Tarjetas Adicionales</h3>
+                                                        <div class="box-tools pull-right">
+                                                            <button class="btn btn-box-tool" onclick="openmodalempty();return false;" title="Editar tarjetas adicionales" data-widget="chat-pane-toggle"><i class="glyphicon glyphicon-pencil"></i></button>
+                                                        </div><!-- /.box-tools -->
+                                                    </div><!-- /.box-header -->
+                                                    <div class="box-body">
+                                                        <table id="TarAddTable" class="table table-bordered table-striped">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>Nombre</th>
+                                                                    <th>Cédula</th>
+                                                                    <th>Teléfono 1</th>
+                                                                    <th>Teléfono 2</th>
+                                                                    <th>Email</th>
+                                                                    <th>Dirección</th>
+                                                                    <th>Cargo</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                @*Aqui va el contenido de la tabla*@
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+
+                                        <div class="row">
+                                            <hr />
+                                            <div class="col-md-12 col-xs-12">
+
+                                                @Html.ActionLink(" Volver al listado", "Index", new { @class = "pull-rigth" })
+                                                &nbsp;<input type="submit" value="Agregar afiliado" class="btn btn-primary pull-right" />
+
+                                            </div>
+
+                                        </div>
+
+                                    </div> @*Form horizontal*@
+                                }
+
+                            </div><!-- /.box-body -->
+                        </div><!-- /.box -->
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+
+            </section><!-- /.content -->
+        </div><!-- /.content-wrapper -->
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        
+        $(".datepickershortday").data('datetimepicker').setLocalDate(new Date());
+        $(".datepickershort").data('datetimepicker').setLocalDate(new Date());      
+
+    })   
+</script>
+
+@*Import Sidebar Right*@
+@Html.Partial("~/Views/Shared/_SidebarRight.cshtml")
+

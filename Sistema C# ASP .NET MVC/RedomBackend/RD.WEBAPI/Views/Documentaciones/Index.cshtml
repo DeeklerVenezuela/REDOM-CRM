@@ -1,0 +1,282 @@
+﻿@model IEnumerable<RD.Data.Models.Documentacion>
+
+@{
+    ViewBag.Title = "Documentación";
+}
+
+<div class="wrapper">
+
+    @Html.Partial("~/Views/Shared/_Header.cshtml")
+
+    @*Import Sidebar Left*@
+    @Html.Partial("~/Views/Shared/_SidebarLeft.cshtml")
+    <div class="wrapper">
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>
+                    Sistema de gestión
+                    <small>Documentaciones</small>
+                </h1>
+                <ol class="breadcrumb">
+                    <li><a href="#"><i class="fa fa-newspaper-o"></i> Home</a></li>
+                    <li><a href="#">Documentaciones</a></li>
+                </ol>
+            </section>
+            <section class="content">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="box">
+                            <div class="box-header">
+                                
+                                <div class="col-md-7">
+                                    <h3 class="box-title">Generación de documentaciones</h3>
+                                    
+                                </div>
+                                <div class="col-md-5 pull-right">
+                                    <div class="form-group">
+                                        <label class="control-label col-md-4">Generar excel de: </label>
+                                        <div class="col-md-5">
+                                            @Html.DropDownList("ReportType", new SelectList(@ViewBag.ReportType, "Value", "Text"), new { @class = "form-control", @id = "ExcelData" })
+                                        </div>
+                                        <input type="button" class="btn btn-primary col-md-3" value="Aceptar" onclick="ReturnListEx()" />
+                                    </div>
+                                </div>
+                                
+                                
+                            </div><!-- /.box-header -->
+                            <div class="box-body">
+                                <hr />
+                                @*<p>
+                                        @Html.ActionLink("Create New", "Create")
+                                    </p>*@
+                                <table id="MyTableSort" class="table table-bordered table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                <input type="checkbox" id="MasterCheck" />
+                                            </th>
+                                            <th>
+                                                Afiliado
+                                            </th>
+                                            <th>
+                                                ID
+                                            </th>
+                                            <th>
+                                                Bienvenida
+                                            </th>
+                                            <th>
+                                                Carnet
+                                            </th>
+                                            <th>
+                                                Label
+                                            </th>
+                                            <th>
+                                                Certificado 1
+                                            </th>
+                                            <th>
+                                                Certificado 2
+                                            </th>
+                                            <th>
+                                                Generada
+                                            </th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                       
+                                        @{
+    var chekN = 1;
+    foreach (var item in Model)
+    {
+        <tr id="row-@(chekN)" data-ida="@(item.DocumentacionID)">
+            <td>
+                <input class="hijo" type="checkbox" value="@(item.DocumentacionID)" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Afiliado.Nombres)
+            </td>
+            <td>
+                @{
+                    var i= item.Afiliado.AfiliadoIndice.ToString();
+                    while (i.Length < 8)
+                    {
+                        i = "0" + i;
+                    }
+                    if (i.Length > 4) { 
+                                        @Html.Raw("7777-2552-" + i.Substring(0, 4) + "-" + i.Substring(4, 4))
+                                    }
+                    
+                    
+                }
+                
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CartaBienvenida)
+                @if (item.CartaBienvenida == false)
+                {
+                    <label class="text-red">@item.CartaBienvenida</label>
+                }
+                else
+                {
+                    <label class="text-green">@item.CartaBienvenida</label>
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Carnet)
+                @if (item.Carnet == false)
+                {
+                    <label class="text-red">@item.Carnet</label>
+                }
+                else
+                {
+                    <label class="text-green">@item.Carnet</label>
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LabelSobres)
+                @if (item.LabelSobres == false)
+                {
+                    <label class="text-red">@item.LabelSobres</label>
+                }
+                else
+                {
+                    <label class="text-green">@item.LabelSobres</label>
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CertificadoRegalo)
+                @if (item.CertificadoRegalo == false)
+                {
+                    <label class="text-red">@item.CertificadoRegalo</label>
+                }
+                else
+                {
+                    <label class="text-green">@item.CertificadoRegalo</label>
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CertificadoRegalo2)
+                @if (item.CertificadoRegalo2 == false)
+                {
+                    <label class="text-red">@item.CertificadoRegalo2</label>
+                }
+                else
+                {
+                    <label class="text-green">@item.CertificadoRegalo2</label>
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Generada)
+                @if (item.Generada == false)
+                {
+                    <label class="text-red">@item.Generada</label>
+                }
+                else
+                {
+                    <label class="text-green">@item.Generada</label>
+                }
+            </td>
+            <td>
+                @*@Html.ActionLink("Editar", "Edit", new { id = item.DocumentacionID }) |*@
+                @Html.ActionLink("Detalles", "Details", new { id = item.DocumentacionID })
+                @*@Html.ActionLink("Eliminar", "Delete", new { id = item.DocumentacionID })*@
+            </td>
+        </tr>
+                chekN++;
+    }
+}
+                                    </tbody>
+                                </table>
+                            </div><!-- /.box-body -->
+                        </div><!-- /.box -->
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </section><!-- /.content -->
+        </div><!-- /.content-wrapper -->
+    </div>
+</div>
+
+                      <script>
+                          $(document).ready(function () {
+                              table = $('#MyTableSort').DataTable({
+                                  paging: false
+                              });
+
+                              table.destroy();
+                              table = $('#MyTableSort').DataTable({
+                                  searching: false,
+                                  "columnDefs": [{
+                                      "targets": 'no-sort',
+                                      "orderable": false,
+                                  }]
+
+                              });
+                          });
+                          $('#MasterCheck').click(function () {
+                              $('input[class=hijo]').each(function () {
+                                  if ($("input[id=MasterCheck]:checked").length == 1) {
+                                      this.checked = true;
+                                  } else {
+                                      this.checked = false;
+                                  }
+                              });
+                          });
+                          function ReturnListEx() {
+                              //alert($("tbody input:checked").length)
+                              //alert($("tbody tr").length)
+                              var eList = [];
+                              //alert($("#ExcelData").val());
+                              var n = $("tbody tr").length;
+                              if (n > 0) {
+                                  for (var i = 1; i <= n; i++) {
+                                      if ($("#row-" + i + " input[class=hijo]").is(':checked')) {
+                                         var ins = $("#row-" + i).attr('data-ida');
+                                         //console.log("Seleccionado su dataID es: " + ins);
+                                         eList.push(ins);
+                                      }
+                                  }
+                                  if (eList.length > 0) {
+                                     // console.log(eList);
+                                     // console.log(eList.length);
+                                     GeneExcel(eList);
+                                  } else{
+                                      alert("Estimado usuario, por favor seleccione filas a generar.")
+                                  }
+                                  //else {
+                                     // alert("No hay nada")
+                                 // }
+                                 
+                              }
+                          }
+                          //LLamada al Controlador.
+                          function GeneExcel(e) {
+                              //alert(e);
+                              var trep = $("#ExcelData").val();
+                              $.ajax({
+                                  url: '/Archivos/GetXLSReport',
+                                  type: 'post',
+                                  data: { ListEx : e , tip : trep },
+                                  success: function (result) {
+                                      //$("#direcciones-container").append(result);                                      
+                                      window.open(result[0], '_blank');
+                                      DeleteFile(result[1]);
+                                  }
+                              });
+                              return false;
+                          }
+                          function DeleteFile(q) {
+                              //alert(q);
+                              $.ajax({
+                                  url: 'Archivos/DeleteFile',
+                                  type: 'post',
+                                  data: { path: q },
+                                  success: window.location.reload()
+                              });
+                              return false;
+                          }
+                      </script>
+
+@*Import Sidebar Right*@
+@Html.Partial("~/Views/Shared/_SidebarRight.cshtml")

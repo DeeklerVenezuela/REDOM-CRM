@@ -1,0 +1,320 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E946F743-ECE9-4A8C-8C9D-BDCEA7C5D7F3}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>RD.Data</RootNamespace>
+    <AssemblyName>RD.Data</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DAL\DbContextRD.cs" />
+    <Compile Include="DAL\MyDbInitializer.cs" />
+    <Compile Include="Migrations\201604221610316_Initial.cs" />
+    <Compile Include="Migrations\201604221610316_Initial.Designer.cs">
+      <DependentUpon>201604221610316_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604222014579_nombreAMembresia.cs" />
+    <Compile Include="Migrations\201604222014579_nombreAMembresia.Designer.cs">
+      <DependentUpon>201604222014579_nombreAMembresia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604222102197_Certificados.cs" />
+    <Compile Include="Migrations\201604222102197_Certificados.Designer.cs">
+      <DependentUpon>201604222102197_Certificados.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604231824044_CertificadoAReserva.cs" />
+    <Compile Include="Migrations\201604231824044_CertificadoAReserva.Designer.cs">
+      <DependentUpon>201604231824044_CertificadoAReserva.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604301431202_agregarCargoATrajetaAdicional.cs" />
+    <Compile Include="Migrations\201604301431202_agregarCargoATrajetaAdicional.Designer.cs">
+      <DependentUpon>201604301431202_agregarCargoATrajetaAdicional.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604301526442_agregarTrabajadoAProspecto.cs" />
+    <Compile Include="Migrations\201604301526442_agregarTrabajadoAProspecto.Designer.cs">
+      <DependentUpon>201604301526442_agregarTrabajadoAProspecto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605030115360_objeciones.cs" />
+    <Compile Include="Migrations\201605030115360_objeciones.Designer.cs">
+      <DependentUpon>201605030115360_objeciones.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605031358133_CompletarDummy.cs" />
+    <Compile Include="Migrations\201605031358133_CompletarDummy.Designer.cs">
+      <DependentUpon>201605031358133_CompletarDummy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605070442086_permisos.cs" />
+    <Compile Include="Migrations\201605070442086_permisos.Designer.cs">
+      <DependentUpon>201605070442086_permisos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605271911276_hotel-dummy.cs" />
+    <Compile Include="Migrations\201605271911276_hotel-dummy.Designer.cs">
+      <DependentUpon>201605271911276_hotel-dummy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605301827431_hotelError.cs" />
+    <Compile Include="Migrations\201605301827431_hotelError.Designer.cs">
+      <DependentUpon>201605301827431_hotelError.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606012338552_TarjAddsAfiliado.cs" />
+    <Compile Include="Migrations\201606012338552_TarjAddsAfiliado.Designer.cs">
+      <DependentUpon>201606012338552_TarjAddsAfiliado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606020111426_82orweohjnc.cs" />
+    <Compile Include="Migrations\201606020111426_82orweohjnc.Designer.cs">
+      <DependentUpon>201606020111426_82orweohjnc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606252309274_MembresiaVence.cs" />
+    <Compile Include="Migrations\201606252309274_MembresiaVence.Designer.cs">
+      <DependentUpon>201606252309274_MembresiaVence.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606271314265_Called MV.cs" />
+    <Compile Include="Migrations\201606271314265_Called MV.Designer.cs">
+      <DependentUpon>201606271314265_Called MV.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606281957487_AfiliacionesVencidasStatus.cs" />
+    <Compile Include="Migrations\201606281957487_AfiliacionesVencidasStatus.Designer.cs">
+      <DependentUpon>201606281957487_AfiliacionesVencidasStatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201607021949324_GastosSecond.cs" />
+    <Compile Include="Migrations\201607021949324_GastosSecond.Designer.cs">
+      <DependentUpon>201607021949324_GastosSecond.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201607022008088_SGastos.cs" />
+    <Compile Include="Migrations\201607022008088_SGastos.Designer.cs">
+      <DependentUpon>201607022008088_SGastos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201607201531261_CFPagosR.cs" />
+    <Compile Include="Migrations\201607201531261_CFPagosR.Designer.cs">
+      <DependentUpon>201607201531261_CFPagosR.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201608161925286_Ampliar-comentario.cs" />
+    <Compile Include="Migrations\201608161925286_Ampliar-comentario.Designer.cs">
+      <DependentUpon>201608161925286_Ampliar-comentario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Afiliado.cs" />
+    <Compile Include="Models\Archivo.cs" />
+    <Compile Include="Models\Banco.cs" />
+    <Compile Include="Models\CertificadoDeRegalo.cs" />
+    <Compile Include="Models\ComprobanteFiscal.cs" />
+    <Compile Include="Models\ControlDummy.cs" />
+    <Compile Include="Models\Direccion.cs" />
+    <Compile Include="Models\Documentacion.cs" />
+    <Compile Include="Models\EmailUsuario.cs" />
+    <Compile Include="Models\Empleado.cs" />
+    <Compile Include="Models\Empresa.cs" />
+    <Compile Include="Models\Gasto.cs" />
+    <Compile Include="Models\HabitacionReserva.cs" />
+    <Compile Include="Models\Hotel.cs" />
+    <Compile Include="Models\HotelDummy.cs" />
+    <Compile Include="Models\Log.cs" />
+    <Compile Include="Models\Login.cs" />
+    <Compile Include="Models\Membresia.cs" />
+    <Compile Include="Models\MembresiaVence.cs" />
+    <Compile Include="Models\NCF.cs" />
+    <Compile Include="Models\ObjecionesDummy.cs" />
+    <Compile Include="Models\Pago.cs" />
+    <Compile Include="Models\PagosReserva.cs" />
+    <Compile Include="Models\Prospecto.cs" />
+    <Compile Include="Models\Proveedor.cs" />
+    <Compile Include="Models\Reclamo.cs" />
+    <Compile Include="Models\Reserva.cs" />
+    <Compile Include="Models\Rol.cs" />
+    <Compile Include="Models\ScriptDummy.cs" />
+    <Compile Include="Models\Status.cs" />
+    <Compile Include="Models\Tarjeta.cs" />
+    <Compile Include="Models\TarjetaAdicional.cs" />
+    <Compile Include="Models\TarjetaUsuario.cs" />
+    <Compile Include="Models\Telefono.cs" />
+    <Compile Include="Models\TipoComprobante.cs" />
+    <Compile Include="Models\UserEstado.cs" />
+    <Compile Include="Models\UserPermision.cs" />
+    <Compile Include="Models\Voucher.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\RD.Data.DAL.DataSet1.datasource" />
+    <None Include="Properties\DataSources\RD.Data.DAL.DbContextRD.datasource" />
+    <None Include="Properties\DataSources\RD.Data.DAL.MyDbInitializer.datasource" />
+    <None Include="Properties\DataSources\RD.Data.Migrations.agregarCargoATrajetaAdicional.datasource" />
+    <None Include="Properties\DataSources\RD.Data.Migrations.agregarTrabajadoAProspecto.datasource" />
+    <None Include="Properties\DataSources\RD.Data.Migrations.CertificadoAReserva.datasource" />
+    <None Include="Properties\DataSources\RD.Data.Migrations.Certificados.datasource" />
+    <None Include="Properties\DataSources\RD.Data.Migrations.CompletarDummy.datasource" />
+    <None Include="Properties\DataSources\RD.Data.Migrations.Configuration.datasource" />
+    <None Include="Properties\DataSources\RD.Data.Migrations.hoteldummy.datasource" />
+    <None Include="Properties\DataSources\RD.Data.Migrations.hotelError.datasource" />
+    <None Include="Properties\DataSources\RD.Data.Migrations.Initial.datasource" />
+    <None Include="Properties\DataSources\RD.Data.Migrations.nombreAMembresia.datasource" />
+    <None Include="Properties\DataSources\RD.Data.Migrations.objeciones.datasource" />
+    <None Include="Properties\DataSources\RD.Data.Migrations.permisos.datasource" />
+    <None Include="Properties\DataSources\RD.Data.Migrations.TarjAddsAfiliado.datasource" />
+    <None Include="Properties\DataSources\RD.Data.Migrations._82orweohjnc.datasource" />
+    <None Include="Properties\DataSources\RD.Data.Models.Afiliado.datasource" />
+    <None Include="Properties\DataSources\RD.Data.Models.Archivo.datasource" />
+    <None Include="Properties\DataSources\RD.Data.Models.Banco.datasource" />
+    <None Include="Properties\DataSources\RD.Data.Models.CertificadoDeRegalo.datasource" />
+    <None Include="Properties\DataSources\RD.Data.Models.ComprobanteFiscal.datasource" />
+    <None Include="Properties\DataSources\RD.Data.Models.ControlDummy.datasource" />
+    <None Include="Properties\DataSources\RD.Data.Models.Direccion.datasource" />
+    <None Include="Properties\DataSources\RD.Data.Models.Documentacion.datasource" />
+    <None Include="Properties\DataSources\RD.Data.Models.EmailUsuario.datasource" />
+    <None Include="Properties\DataSources\RD.Data.Models.Empleado.datasource" />
+    <None Include="Properties\DataSources\RD.Data.Models.Empresa.datasource" />
+    <None Include="Properties\DataSources\RD.Data.Models.Gasto.datasource" />
+    <None Include="Properties\DataSources\RD.Data.Models.HabitacionReserva.datasource" />
+    <None Include="Properties\DataSources\RD.Data.Models.Hotel.datasource" />
+    <None Include="Properties\DataSources\RD.Data.Models.HotelDummy.datasource" />
+    <None Include="Properties\DataSources\RD.Data.Models.Log.datasource" />
+    <None Include="Properties\DataSources\RD.Data.Models.Login.datasource" />
+    <None Include="Properties\DataSources\RD.Data.Models.Membresia.datasource" />
+    <None Include="Properties\DataSources\RD.Data.Models.NCF.datasource" />
+    <None Include="Properties\DataSources\RD.Data.Models.ObjecionesDummy.datasource" />
+    <None Include="Properties\DataSources\RD.Data.Models.Pago.datasource" />
+    <None Include="Properties\DataSources\RD.Data.Models.PagosReserva.datasource" />
+    <None Include="Properties\DataSources\RD.Data.Models.Prospecto.datasource" />
+    <None Include="Properties\DataSources\RD.Data.Models.Proveedor.datasource" />
+    <None Include="Properties\DataSources\RD.Data.Models.Reclamo.datasource" />
+    <None Include="Properties\DataSources\RD.Data.Models.Reserva.datasource" />
+    <None Include="Properties\DataSources\RD.Data.Models.Rol.datasource" />
+    <None Include="Properties\DataSources\RD.Data.Models.ScriptDummy.datasource" />
+    <None Include="Properties\DataSources\RD.Data.Models.Tarjeta.datasource" />
+    <None Include="Properties\DataSources\RD.Data.Models.TarjetaAdicional.datasource" />
+    <None Include="Properties\DataSources\RD.Data.Models.TarjetaUsuario.datasource" />
+    <None Include="Properties\DataSources\RD.Data.Models.Telefono.datasource" />
+    <None Include="Properties\DataSources\RD.Data.Models.TipoComprobante.datasource" />
+    <None Include="Properties\DataSources\RD.Data.Models.UserEstado.datasource" />
+    <None Include="Properties\DataSources\RD.Data.Models.UserPermision.datasource" />
+    <None Include="Properties\DataSources\RD.Data.Models.Voucher.datasource" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RD.Repository\RD.Repository.csproj">
+      <Project>{57ac8073-4c1a-4108-8008-c688bc7cb309}</Project>
+      <Name>RD.Repository</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201604221610316_Initial.resx">
+      <DependentUpon>201604221610316_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604222014579_nombreAMembresia.resx">
+      <DependentUpon>201604222014579_nombreAMembresia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604222102197_Certificados.resx">
+      <DependentUpon>201604222102197_Certificados.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604231824044_CertificadoAReserva.resx">
+      <DependentUpon>201604231824044_CertificadoAReserva.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604301431202_agregarCargoATrajetaAdicional.resx">
+      <DependentUpon>201604301431202_agregarCargoATrajetaAdicional.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604301526442_agregarTrabajadoAProspecto.resx">
+      <DependentUpon>201604301526442_agregarTrabajadoAProspecto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605030115360_objeciones.resx">
+      <DependentUpon>201605030115360_objeciones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605031358133_CompletarDummy.resx">
+      <DependentUpon>201605031358133_CompletarDummy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605070442086_permisos.resx">
+      <DependentUpon>201605070442086_permisos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605271911276_hotel-dummy.resx">
+      <DependentUpon>201605271911276_hotel-dummy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605301827431_hotelError.resx">
+      <DependentUpon>201605301827431_hotelError.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606012338552_TarjAddsAfiliado.resx">
+      <DependentUpon>201606012338552_TarjAddsAfiliado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606020111426_82orweohjnc.resx">
+      <DependentUpon>201606020111426_82orweohjnc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606252309274_MembresiaVence.resx">
+      <DependentUpon>201606252309274_MembresiaVence.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606271314265_Called MV.resx">
+      <DependentUpon>201606271314265_Called MV.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606281957487_AfiliacionesVencidasStatus.resx">
+      <DependentUpon>201606281957487_AfiliacionesVencidasStatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607021949324_GastosSecond.resx">
+      <DependentUpon>201607021949324_GastosSecond.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607022008088_SGastos.resx">
+      <DependentUpon>201607022008088_SGastos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607201531261_CFPagosR.resx">
+      <DependentUpon>201607201531261_CFPagosR.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608161925286_Ampliar-comentario.resx">
+      <DependentUpon>201608161925286_Ampliar-comentario.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,97 @@
+﻿<aside class="main-sidebar">
+
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+
+        <!-- Sidebar user panel (optional) -->
+        <!--<div class="user-panel" style="height:65px;">
+
+            <div class="pull-left info">
+                <img src="~/Images/logo.png" class="img-bordered img-responsive" alt="Alternate Text" />
+                <p>Nombre de la empresa</p>
+                
+                <a href="#">Online</a>
+            </div>
+        </div>-->
+
+
+        <!-- Sidebar Menu -->
+        <ul class="sidebar-menu">
+            <li class="header">Opciones del sistema</li>
+            <!-- Optionally, you can add icons to the links -->
+            <li data-controller="home"><a href="/Home"><i class="fa fa-home"></i><span>Inicio</span></a></li>
+            <li data-controller="sistema" class="treeview">
+                <a href="#"><i class="fa fa-question-circle"></i> <span>Sistema</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <ul class="treeview-menu">
+                    <li data-controller="bancos"><a href="/Bancos">Bancos del sistema</a></li>
+                    <li data-controller="tarjetas"><a href="/Tarjetas">Tarjetas del sistema</a></li>
+                    <li data-controller="userestadoes"><a href="/UserEstadoes">Estados de Afiliados</a></li>
+                    <li data-controller="membresias"><a href="/Membresias">Membresias</a></li>
+                    <li data-controller="empresas"><a href="/Empresas">Datos de empresa</a></li>
+                    <li data-controller="ncfs">
+                        <a href="#"><span>Comprobantes Ficales</span> <i class="fa fa-angle-left pull-right"></i></a>
+                        <ul class="treeview-menu">
+                            <li data-controller="ncfs"><a href="/TipoComprobantes">Tipos de comprobantes</a></li>
+                            <li data-controller="ncfs"><a href="/NCFs">NCF</a></li>
+                        </ul>
+                    </li>
+                    <li data-controller="reportes">
+                        <a href="#"><span>Reportes</span> <i class="fa fa-angle-left pull-right"></i></a>
+                        <ul class="treeview-menu">
+                            <li data-controller="reportes"><a href="/#" onclick="GenerarADM()"> Generar Nómina</a></li>
+                            <li data-controller="reportes"><a href="/Archivos/Report607"> Reporte 607</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            @*<li data-controller="afiliados"><a href="/Afiliados"><i class="fa fa-diamond"></i><span>Afiliados</span></a></li>*@
+            <li data-controller="afiliados">
+                <a href="#"><i class="fa fa-diamond"></i><span>Afiliados</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <ul class="treeview-menu">
+                    <li data-controller="afiliados"><a href="/Afiliados">Afiliados Activos</a></li>
+                    <li id="paintRed"data-controller="afiliados"><a href="/MembresiaVence">Afiliaciones Vencidas</a></li>
+                </ul>
+            </li>
+            <li data-controller="usuarios"><a href="#"><i class="fa fa-users"></i><span>Personas</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <ul class="treeview-menu">
+                    <li data-controller="empleadoes"><a href="/Empleadoes">Empleados</a></li>
+                    <li data-controller="usuarios"><a href="/Usuarios">Usuarios del sistema</a></li>
+                </ul>
+            </li>
+            @*<li data-controller="archivos"><a href="/Archivos"><i class="fa fa-file-excel-o"></i> <span>Prospectos por lotes</span></a></li>*@
+            <li data-controller="reservas"><a href="/Reservas"><i class="fa fa-briefcase"></i> <span>Reservas</span></a></li>
+            <li data-controller="prospectos">
+                <a href="#"><i class="fa fa-user-plus"></i><span>Prospectos</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <ul class="treeview-menu">
+                    <li data-controller="prospectos"><a href="/Prospectos">Prospectos</a></li>
+                    <li data-controller="archivos"><a href="/Archivos">Prospectos por lotes</a></li>
+                    <li data-controller="archivos"><a href="~/Media/carga_prospectos.xlsx"><i class="fa fa-arrow-circle-o-down"></i> Descarga de archivo</a></li>
+                </ul>
+            </li>
+            <li data-controller="documentaciones"><a href="/Documentaciones"><i class="fa fa-newspaper-o"></i> <span>Documentación</span></a></li>
+            <li data-controller="pagos"><a href="/Pagos"><i class="fa fa-money"></i> <span>Pagos</span></a></li>
+            @*<li data-controller="gastos"><a href="/Gastos"><i class="fa fa-money"></i> <span>Gastos</span></a></li>*@
+            <li data-controller="dummies">
+                <a href="/Dummies"><i class="fa fa-tty"></i> <span>Dummy</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <ul class="treeview-menu">
+                    <li data-controller="dummies"><a href="/Dummies"><i class="fa fa-tty"></i> <span>Dummy</span> </a></li>
+                    <li data-controller="dummies"><a href="/HotelesDummys">Hoteles</a></li>
+                    <li data-controller="dummies"><a href="/ScriptDummies">Scripts</a></li>
+                    <li data-controller="dummies"><a href="/Objeciones">Objeciones</a></li>
+                </ul>
+            </li>
+            <li data-controller="hoteles"><a href="/Hoteles"><i class="fa fa-building-o"></i> <span>Hoteles</span></a></li>
+            <li data-controller="certificados"><a href="/Certificados"><i class="fa fa-gift"></i> <span>Certificados</span></a></li>
+        </ul><!-- /.sidebar-menu -->
+    </section>
+    <!-- /.sidebar -->
+</aside>
+<script>
+    if (sessionStorage.PaintRed) {
+        if (sessionStorage.PaintRed == "True") {
+            //$('#paintRed').addClass("paintRedL");
+            $('#paintRed').css("background", "red");
+            $('#paintRed a').css("color", "white");
+            }
+    }
+</script>

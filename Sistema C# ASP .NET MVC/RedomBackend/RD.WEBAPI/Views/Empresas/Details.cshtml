@@ -1,0 +1,142 @@
+﻿@model RD.Data.Models.Empresa
+
+@{
+    ViewBag.Title = "Empresa";
+}
+
+<div class="wrapper">
+
+    @Html.Partial("~/Views/Shared/_Header.cshtml")
+
+    @*Import Sidebar Left*@
+    @Html.Partial("~/Views/Shared/_SidebarLeft.cshtml")
+    <div class="wrapper">
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>
+                    Sistema de gestión
+                    <small>Empresa</small>
+                </h1>
+                <ol class="breadcrumb">
+                    <li><a href="#"><i class="fa fa-newspaper-o"></i> Home</a></li>
+                    <li><a href="#">Empresa</a></li>
+                </ol>
+            </section>
+            <section class="content">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="box">
+                            <div class="box-header">
+                                <h3 class="box-title">Datos de la empresa</h3>
+                                <hr />
+                            </div><!-- /.box-header -->
+                            <div class="box-body">
+
+                                <div>
+                                    <dl class="dl-horizontal">
+                                        <dt>
+                                            @Html.DisplayNameFor(model => model.Nombre)
+                                        </dt>
+
+                                        <dd>
+                                            @Html.DisplayFor(model => model.Nombre)
+                                        </dd>
+
+                                        <dt>
+                                            Identificación fiscal
+                                        </dt>
+
+                                        <dd>
+                                            @Html.DisplayFor(model => model.IDFiscal)
+                                        </dd>
+
+                                        <dt>
+                                            Dirección
+                                        </dt>
+
+                                        <dd>
+                                            @Html.DisplayFor(model => model.Direccion)
+                                        </dd>
+
+                                        <dt>
+                                            @Html.DisplayNameFor(model => model.Email)
+                                        </dt>
+
+                                        <dd>
+                                            @Html.DisplayFor(model => model.Email)
+                                        </dd>
+
+                                        <dt>
+                                            Teléfono
+                                        </dt>
+
+                                        <dd>
+                                            @Html.DisplayFor(model => model.Telefono)
+                                        </dd>
+
+                                        <dt>
+                                            @Html.DisplayNameFor(model => model.Website)
+                                        </dt>
+
+                                        <dd>
+                                            @Html.DisplayFor(model => model.Website)
+                                        </dd>
+
+                                        <dt>
+                                            Logo
+                                        </dt>
+
+                                        <dd>
+                                            <img src="~/Images/logo.png" style="width:200px;" class="img-responsive"/>
+                                        </dd>
+
+                                        <dt>
+                                            Meses adicionales habilitados
+                                        </dt>
+
+                                        <dd>
+                                            @Html.DisplayFor(model => model.MesesAdicionales)
+                                        </dd>
+
+                                        <dt>
+                                           Monto de documentación
+                                        </dt>
+
+                                        <dd>
+                                            @Html.DisplayFor(model => model.MontoDocumentacion)
+                                        </dd>
+
+                                        <dt>
+                                            Monto de Reservas
+                                        </dt>
+
+                                        <dd>
+                                            @Html.DisplayFor(model => model.MontoReserva)
+                                        </dd>
+
+                                        <dt>
+                                            Tasa de cambio
+                                        </dt>
+
+                                        <dd>
+                                            @Html.DisplayFor(model => model.TasaDeCambio)
+                                        </dd>
+                                    </dl>
+                                </div>
+                                <p>
+                                    @Html.ActionLink("Editar", "Edit", new { id = Model.EmpresaID }, new { @class="btn btn-primary pull-right"}) 
+                                    
+                                </p>
+                            </div><!-- /.box-body -->
+                        </div><!-- /.box -->
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </section><!-- /.content -->
+        </div><!-- /.content-wrapper -->
+    </div>
+</div>
+
+
+@*Import Sidebar Right*@
+@Html.Partial("~/Views/Shared/_SidebarRight.cshtml")

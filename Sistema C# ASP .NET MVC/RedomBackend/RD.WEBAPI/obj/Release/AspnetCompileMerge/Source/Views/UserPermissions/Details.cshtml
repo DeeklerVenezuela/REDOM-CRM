@@ -1,0 +1,106 @@
+﻿@model RD.Data.Models.UserPermision
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>UserPermision</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Afiliados)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Afiliados)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Archivos)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Archivos)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Users)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Users)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Empleadoes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Empleadoes)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Dummy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Dummy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Membresias)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Membresias)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cobros)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cobros)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Prospectos)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Prospectos)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Reservas)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Reservas)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Permisos)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Permisos)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Reportes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Reportes)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.UserPermisionID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,5 @@
+C:\Users\Jean Robles\Source\Workspaces\RedomBackend\RD.Repository\bin\Release\RD.Repository.dll
+C:\Users\Jean Robles\Source\Workspaces\RedomBackend\RD.Repository\bin\Release\RD.Repository.pdb
+C:\Users\Jean Robles\Source\Workspaces\RedomBackend\RD.Repository\obj\Release\RD.Repository.dll
+C:\Users\Jean Robles\Source\Workspaces\RedomBackend\RD.Repository\obj\Release\RD.Repository.pdb
+C:\Users\Jean Robles\Source\Workspaces\RedomBackend\RD.Repository\obj\Release\RD.Repository.csprojResolveAssemblyReference.cache

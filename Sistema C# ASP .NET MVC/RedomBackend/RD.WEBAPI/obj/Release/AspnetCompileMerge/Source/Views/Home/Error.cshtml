@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "Error";
+}
+
+<div class="login-box">
+    <div class="login-logo">
+        <a href="#">Sistema de gestión</a>
+    </div><!-- /.login-logo -->
+    <div class="login-box-body">
+
+        <p class="login-box-msg text-center">
+            <span style="font-size:60px;"><i class="fa fa-user-secret"></i></span><br />
+            Lo sentimos, Usted no posee permisos suficientes para realizar la operación requerida.
+            Para mayor información sobre este error contacte al administrador del sistema.<br /><br /><br />
+            @Html.ActionLink("Ir al inicio", "Index")
+        </p>
+        
+    </div><!-- /.login-box-body -->
+</div><!-- /.login-box -->
+<script>
+    $('document').ready(function () {
+        $('body').removeClass('sidebar-mini');
+        $('body').removeClass('skin blue');
+        $('body').removeClass('fixed');
+        $('body').addClass('hold-transition');
+        $('body').addClass('login-page');
+    })
+</script>
+

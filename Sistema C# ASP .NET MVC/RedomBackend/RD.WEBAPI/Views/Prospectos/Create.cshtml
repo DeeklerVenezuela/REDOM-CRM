@@ -1,0 +1,240 @@
+﻿@model RD.Data.Models.Prospecto
+
+@{
+    ViewBag.Title = "Prospectos";
+}
+
+<div class="wrapper">
+
+    @Html.Partial("~/Views/Shared/_Header.cshtml")
+
+    @*Import Sidebar Left*@
+    @Html.Partial("~/Views/Shared/_SidebarLeft.cshtml")
+    <div class="wrapper">
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>
+                    Sistema de gestión
+                    <small>Prospectos</small>
+                </h1>
+                <ol class="breadcrumb">
+                    <li><a href="#"><i class="fa fa-newspaper-o"></i> Home</a></li>
+                    <li><a href="#">Prospectos</a></li>
+                </ol>
+            </section>
+            <section class="content">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="box">
+                            <div class="box-header">
+                                <h3 class="box-title">Prospectos Registrados</h3>
+                                <hr />
+                            </div><!-- /.box-header -->
+                            <div class="box-body">
+                                @using (Html.BeginForm())
+                                {
+                                    @Html.AntiForgeryToken()
+
+                                    <div class="form-horizontal">
+
+                                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                        <div class="row">
+
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    @Html.LabelFor(model => model.Nombres, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                    <div class="col-md-10">
+                                                        @Html.EditorFor(model => model.Nombres, new { htmlAttributes = new { @class = "form-control" } })
+                                                        @Html.ValidationMessageFor(model => model.Nombres, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label class = "control-label col-md-5">Primer Apellido</label>
+                                                    <div class="col-md-7">
+                                                        @Html.EditorFor(model => model.Apellido1, new { htmlAttributes = new { @class = "form-control" } })
+                                                        @Html.ValidationMessageFor(model => model.Apellido1, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label class = "control-label col-md-5">Segundo Apellido</label>
+                                                    <div class="col-md-7">
+                                                        @Html.EditorFor(model => model.Apellido2, new { htmlAttributes = new { @class = "form-control" } })
+                                                        @Html.ValidationMessageFor(model => model.Apellido2, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            
+
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-2">Cédula</label>
+                                                    <div class="col-md-10">
+                                                        @Html.EditorFor(model => model.Cedula, new { htmlAttributes = new { @class = "form-control cedula-mask" } })
+                                                        @Html.ValidationMessageFor(model => model.Cedula, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    @Html.LabelFor(model => model.Respuesta, htmlAttributes: new { @class = "control-label col-md-4" })
+                                                    <div class="col-md-8">
+                                                        @Html.EditorFor(model => model.Respuesta, new { htmlAttributes = new { @class = "form-control" } })
+                                                        @Html.ValidationMessageFor(model => model.Respuesta, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    @Html.LabelFor(model => model.Fax, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                    <div class="col-md-10">
+                                                        @Html.EditorFor(model => model.Fax, new { htmlAttributes = new { @class = "form-control" } })
+                                                        @Html.ValidationMessageFor(model => model.Fax, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+
+
+                                            <div class="col-md-4">
+                                                
+
+                                                <div class="form-group">
+                                                    @Html.LabelFor(model => model.Comentario, htmlAttributes: new { @class = "control-label col-md-4" })
+                                                    <div class="col-md-8">
+                                                        @Html.EditorFor(model => model.Comentario, new { htmlAttributes = new { @class = "form-control" } })
+                                                        @Html.ValidationMessageFor(model => model.Comentario, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-3">Cumpleaños</label>
+                                                    <div class="col-md-9">
+                                                        @*@Html.EditorFor(model => model.Cumpleanio, new { htmlAttributes = new { @class = "form-control" } })*@
+
+                                                        <div class='input-group date datepickershortday'>
+                                                            @Html.EditorFor(model => model.FechaDeNacimiento, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
+                                                            <span class="input-group-addon">
+                                                                <span class="glyphicon glyphicon-calendar">
+                                                                </span>
+                                                            </span>
+                                                        </div>
+                                                        @Html.ValidationMessageFor(model => model.FechaDeNacimiento, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                    <div class="col-md-10">
+                                                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control",@type ="email" } })
+                                                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <h4>Teléfonos</h4>
+                                                <div class="form-group">  
+                                                    <div class="col-md-3">
+                                                        @Html.EditorFor(model => model.Telefonos[0].Tipo, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly", @Value = "Casa" } })
+                                                    </div>  
+                                                    <div class="col-md-9">
+                                                        <div class="col-md-7">
+                                                            @Html.EditorFor(model => model.Telefonos[0].Descripcion, new { htmlAttributes = new { @class = "form-control col-md-6" } })
+                                                        </div>
+                                                        <div class="col-md-5">
+                                                            @Html.EditorFor(model => model.Telefonos[0].Extension, new { htmlAttributes = new { @class = "form-control", @placeholder="Extensión" } })
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <div class="col-md-3">
+                                                        @Html.EditorFor(model => model.Telefonos[1].Tipo, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly", @Value = "Móvil" } })
+                                                    </div>
+                                                    <div class="col-md-9">
+                                                        <div class="col-md-7">
+                                                            @Html.EditorFor(model => model.Telefonos[1].Descripcion, new { htmlAttributes = new { @class = "form-control col-md-6" } })
+                                                        </div>
+                                                        <div class="col-md-5">
+                                                            @Html.EditorFor(model => model.Telefonos[1].Extension, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly",@placeholder = "Extensión" } })
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <div class="col-md-3">
+                                                        @Html.EditorFor(model => model.Telefonos[2].Tipo, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly", @Value = "Oficina" } })
+                                                    </div>
+                                                    <div class="col-md-9">
+                                                        <div class="col-md-7">
+                                                            @Html.EditorFor(model => model.Telefonos[2].Descripcion, new { htmlAttributes = new { @class = "form-control col-md-6" } })
+                                                        </div>
+                                                        <div class="col-md-5">
+                                                            @Html.EditorFor(model => model.Telefonos[2].Extension, new { htmlAttributes = new { @class = "form-control", @placeholder = "Extensión" } })
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-7">
+                                                <h4>Direcciones</h4>
+                                                <div class="form-group">
+                                                    <div class="col-md-4">
+                                                        @Html.EditorFor(model => model.Direcciones[0].Tipo, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly", @Value = "Principal" } })
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                            @Html.EditorFor(model => model.Direcciones[0].Descripcion, new { htmlAttributes = new { @class = "form-control col-md-6" } })
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <div class="col-md-4">
+                                                        @Html.EditorFor(model => model.Direcciones[1].Tipo, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly", @Value = "Secundaria" } })
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        @Html.EditorFor(model => model.Direcciones[1].Descripcion, new { htmlAttributes = new { @class = "form-control col-md-6" } })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+
+
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    @Html.LabelFor(model => model.Activo, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                    <div class="col-md-10">
+                                                        <div class="checkbox">
+                                                            @Html.EditorFor(model => model.Activo, new { htmlAttributes = new { @class = "pull-right" } })
+                                                            @Html.ValidationMessageFor(model => model.Activo, "", new { @class = "text-danger" })
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                
+                                                <div class="form-group">
+                                                    <div class="col-md-12">
+                                                        <input type="submit" value="Crear" class="btn btn-primary pull-right" />
+                                                    @Html.ActionLink("Volver al listado", "Index")
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div> @*row*@
+                                    </div>
+                                }
+
+                                
+
+                            </div><!-- /.box-body -->
+                        </div><!-- /.box -->
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </section><!-- /.content -->
+        </div><!-- /.content-wrapper -->
+    </div>
+</div>
+
+
+@*Import Sidebar Right*@
+@Html.Partial("~/Views/Shared/_SidebarRight.cshtml")

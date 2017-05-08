@@ -1,0 +1,99 @@
+﻿@model IEnumerable<RD.Data.Models.Archivo>
+
+@{
+    ViewBag.Title = "Prospectos";
+}
+
+<div class="wrapper">
+
+    @Html.Partial("~/Views/Shared/_Header.cshtml")
+
+    @*Import Sidebar Left*@
+    @Html.Partial("~/Views/Shared/_SidebarLeft.cshtml")
+    <div class="wrapper">
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>
+                    Sistema de gestión
+                    <small>Archivos</small>
+                </h1>
+                <ol class="breadcrumb">
+                    <li><a href="#"><i class="fa fa-newspaper-o"></i> Home</a></li>
+                    <li><a href="#">Archivos</a></li>
+                </ol>
+            </section>
+            <section class="content">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="box">
+                            <div class="box-header">
+                                <h3 class="box-title">Archivos cargados al sistema</h3>
+                                <hr />
+                            </div><!-- /.box-header -->
+                            <div class="box-body">
+
+                                <p>
+                                    @Html.ActionLink("Crear nuevo", "Create")
+                                </p>
+                                <table id="archivo" class="datatableUI2 table table-bordered table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.Nombre)
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.FechaHora)
+                                            </th>
+                                            <th>
+                                                Activo
+                                            </th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        @foreach (var item in Model)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Nombre)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.FechaHora)
+                                                </td>
+
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Status)
+                                                </td>
+
+                                                <td>
+                                                    @Html.ActionLink("Editar", "Edit", new { id = item.ArchivoID }) |
+                                                    @Html.ActionLink("Detalles", "Details", new { id = item.ArchivoID }) |
+                                                    @Html.ActionLink("Eliminar", "Delete", new { id = item.ArchivoID }) |
+                                                    @Html.ActionLink("Descargar", "GetXLSReport", new { id = item.ArchivoID }) |
+                                                    @if (item.Status == true)
+                                                    {
+                                                        @Html.ActionLink("Desactivar", "DeshabilitarArchivo", new { id = item.ArchivoID, act = false })
+                                                    }
+                                                    else
+                                                    {
+                                                        @Html.ActionLink("Activar", "DeshabilitarArchivo", new { id = item.ArchivoID, act = true })
+                                                    }
+                                                </td>
+
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div><!-- /.box-body -->
+                        </div><!-- /.box -->
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </section><!-- /.content -->
+        </div><!-- /.content-wrapper -->
+    </div>
+</div>
+
+@*Import Sidebar Right*@
+@Html.Partial("~/Views/Shared/_SidebarRight.cshtml")

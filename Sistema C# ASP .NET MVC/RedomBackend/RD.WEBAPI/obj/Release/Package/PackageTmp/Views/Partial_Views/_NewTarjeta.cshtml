@@ -1,0 +1,56 @@
+﻿@model RD.Data.Models.TarjetaUsuario
+
+<div class="form-group tar-con" id="tarjeta_@(ViewBag.Num)">
+
+    <label class="control-label col-md-1">
+        Tarjeta
+
+    </label>
+    <div class="col-md-2">
+        <select class="form-control" id="Tarjetas_@(ViewBag.Num)__Banco" name="Tarjetas[@(ViewBag.Num)].Banco">
+            @foreach (var ban in @ViewBag.Bancos)
+            {
+               <option value="@ban.Nombre">@ban.Nombre</option>
+            }
+        </select>
+    </div>
+
+    <div class="col-md-2">
+        <select class="form-control" id="Tarjetas_@(ViewBag.Num)__Tipo" name="Tarjetas[@(ViewBag.Num)].Tipo">
+            @foreach (var tar in @ViewBag.Tarjetas)
+            {
+                <option value="@tar.Nombre">@tar.Nombre</option>
+            }
+        </select>
+    </div>
+    <div class="col-md-3">
+        <input class="form-control tarjeta-mask text-box single-line" id="Tarjetas_@(ViewBag.Num)__NumeroTarjeta" name="Tarjetas[@(ViewBag.Num)].NumeroTarjeta" required="required" type="text" value="" placeholder="____ - ____ - ____ - ____">
+
+    </div>
+    <div class="col-md-1">
+        <label class="control-label text-right">
+            Expira
+        </label>
+    </div>
+    <div class="col-md-2">
+        <div class='input-group date datepickershort' id="datep_@(ViewBag.Num)">
+            <input class="form-control" id="Tarjetas_@ViewBag.Num__FechaVencimiento" name="Tarjetas[@ViewBag.Num].FechaVencimiento" placeholder="Fecha de vencimiento" required="required" type="datetime">
+            <span class="input-group-addon add-on">
+                <span class="glyphicon glyphicon-calendar">
+                </span>
+            </span>
+        </div>
+    </div>
+    <script>
+    $('#datep_@(ViewBag.Num)').datetimepicker({
+        viewMode: 'months',
+        format: 'MM-yyyy'
+    })
+    $('#datep_@(ViewBag.Num)').data('datetimepicker').setLocalDate(new Date());
+    </script>
+    <div class="col-md-1">
+        @*<button class="btn btn-danger btn-sm hide-tar" id="@ViewBag.Num"><span class="glyphicon glyphicon-trash"></span></button>*@
+        <button class="btn btn-danger btn-sm hide-tar" id="@ViewBag.Num" onclick="$('#Tarjetas_' + this.id + '__NumeroTarjeta').val('');$('#tarjeta_' + id).hide();$('#Tarjetas_' + id + '__NumeroTarjeta').removeAttr('required');return false;"><span class="glyphicon glyphicon-trash"></span></button>
+    </div>
+
+</div>

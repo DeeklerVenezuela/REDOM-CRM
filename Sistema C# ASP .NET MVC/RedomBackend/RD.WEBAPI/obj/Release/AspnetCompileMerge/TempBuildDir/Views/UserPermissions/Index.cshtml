@@ -1,0 +1,93 @@
+﻿@model IEnumerable<RD.Data.Models.UserPermision>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Afiliados)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Archivos)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Users)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Empleadoes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Dummy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Membresias)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cobros)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Prospectos)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Reservas)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Permisos)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Reportes)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Afiliados)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Archivos)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Users)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Empleadoes)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Dummy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Membresias)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cobros)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Prospectos)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Reservas)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Permisos)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Reportes)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.UserPermisionID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.UserPermisionID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.UserPermisionID })
+        </td>
+    </tr>
+}
+
+</table>

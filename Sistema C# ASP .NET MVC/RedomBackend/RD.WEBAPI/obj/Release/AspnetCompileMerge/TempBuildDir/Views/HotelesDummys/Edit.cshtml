@@ -1,0 +1,123 @@
+﻿@model RD.Data.Models.HotelDummy
+
+@{
+    ViewBag.Title = "Edit";
+}
+<div class="wrapper">
+
+    @Html.Partial("~/Views/Shared/_Header.cshtml")
+
+    @*Import Sidebar Left*@
+    @Html.Partial("~/Views/Shared/_SidebarLeft.cshtml")
+    <div class="wrapper">
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>
+                    Sistema de gestión
+                    <small>Dummy</small>
+                </h1>
+                <ol class="breadcrumb">
+                    <li><a href="#"><i class="fa fa-newspaper-o"></i> Home</a></li>
+                    <li><a href="#">Dummy</a></li>
+                </ol>
+            </section>
+            <section class="content">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="box">
+                            <div class="box-header">
+                                <h3 class="box-title">Seleccionar prospecto al sistema</h3>
+                                <hr />
+                            </div><!-- /.box-header -->
+                            <div class="box-body">
+                                <h2>Editar</h2>
+
+                                @using (Html.BeginForm())
+                                {
+                                    @Html.AntiForgeryToken()
+
+                                    <div class="form-horizontal">
+                                        <h4>HotelDummy</h4>
+                                        <hr />
+                                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                        @Html.HiddenFor(model => model.HotelesDummyID)
+
+                                        <div class="form-group">
+                                            <label class="control-label col-md-2">Hotel</label>                                            
+                                            <div class="col-md-10">
+                                                @Html.DropDownListFor(model => model.Hotel, new SelectList(ViewBag.Hotels, "Value", "Text"), new { @class = "form-control certificado", @required = "required" })
+                                                @Html.ValidationMessageFor(model => model.Ubicacion, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.Ubicacion, htmlAttributes: new { @class = "control-label col-md-2" })
+                                            <div class="col-md-10">
+                                                <select id="Ubicacion" name="Ubicacion" required style="height: 35px; border-color: lightgray;" class="col-md-12">
+                                                    <option></option>
+                                                    <option @(Model.Ubicacion == "Azua" ? Html.Raw("selected ") : Html.Raw("")) value="Azua">Azua</option>
+                                                    <option @(Model.Ubicacion == "Bahoruco" ? Html.Raw("selected ") : Html.Raw("")) value="Bahoruco">Bahoruco</option>
+                                                    <option @(Model.Ubicacion == "Barahona" ? Html.Raw("selected ") : Html.Raw("")) value="Barahona">Barahona</option>
+                                                    <option @(Model.Ubicacion == "Dajabón" ? Html.Raw("selected ") : Html.Raw("")) value="Dajabón">Dajabón</option>
+                                                    <option @(Model.Ubicacion == "Distrito Nacional" ? Html.Raw("selected ") : Html.Raw("")) value="Distrito Nacional">Distrito Nacional</option>
+                                                    <option @(Model.Ubicacion == "Duarte" ? Html.Raw("selected ") : Html.Raw("")) value="Duarte">Duarte</option>
+                                                    <option @(Model.Ubicacion == "Elías Piña" ? Html.Raw("selected ") : Html.Raw("")) value="Elías Piña">Elías Piña</option>
+                                                    <option @(Model.Ubicacion == "El Seibo" ? Html.Raw("selected ") : Html.Raw("")) value="El Seibo">El Seibo</option>
+                                                    <option @(Model.Ubicacion == "Espaillat" ? Html.Raw("selected ") : Html.Raw("")) value="Espaillat">Espaillat</option>
+                                                    <option @(Model.Ubicacion == "Hato Mayor" ? Html.Raw("selected ") : Html.Raw("")) value="Hato Mayor">Hato Mayor</option>
+                                                    <option @(Model.Ubicacion == "Hermanas Mirabal" ? Html.Raw("selected ") : Html.Raw("")) value="Hermanas Mirabal">Hermanas Mirabal</option>
+                                                    <option @(Model.Ubicacion == "Independencia" ? Html.Raw("selected ") : Html.Raw("")) value="Independencia">Independencia</option>
+                                                    <option @(Model.Ubicacion == "La Altagracia" ? Html.Raw("selected ") : Html.Raw("")) value="La Altagracia">La Altagracia</option>
+                                                    <option @(Model.Ubicacion == "La Romana" ? Html.Raw("selected ") : Html.Raw("")) value="La Romana">La Romana</option>
+                                                    <option @(Model.Ubicacion == "La Vega" ? Html.Raw("selected ") : Html.Raw("")) value="La Vega">La Vega</option>
+                                                    <option @(Model.Ubicacion == "María Trinidad Sánchez" ? Html.Raw("selected ") : Html.Raw("")) value="María Trinidad Sánchez">María Trinidad Sánchez</option>
+                                                    <option @(Model.Ubicacion == "Monseñor Nouel" ? Html.Raw("selected ") : Html.Raw("")) value="Monseñor Nouel">Monseñor Nouel</option>
+                                                    <option @(Model.Ubicacion == "Monte Cristi" ? Html.Raw("selected ") : Html.Raw("")) value="Monte Cristi">Monte Cristi</option>
+                                                    <option @(Model.Ubicacion == "Monte Plata" ? Html.Raw("selected ") : Html.Raw("")) value="Monte Plata">Monte Plata</option>
+                                                    <option @(Model.Ubicacion == "Pedernales" ? Html.Raw("selected ") : Html.Raw("")) value="Pedernales">Pedernales</option>
+                                                    <option @(Model.Ubicacion == "Peravia" ? Html.Raw("selected ") : Html.Raw("")) value="Peravia">Peravia</option>
+                                                    <option @(Model.Ubicacion == "Puerto Plata" ? Html.Raw("selected ") : Html.Raw("")) value="Puerto Plata">Puerto Plata</option>
+                                                    <option @(Model.Ubicacion == "Samaná" ? Html.Raw("selected ") : Html.Raw("")) value="Samaná">Samaná</option>
+                                                    <option @(Model.Ubicacion == "Sánchez Ramírez" ? Html.Raw("selected ") : Html.Raw("")) value="Sánchez Ramírez">Sánchez Ramírez</option>
+                                                    <option @(Model.Ubicacion == "San Cristóbal" ? Html.Raw("selected ") : Html.Raw("")) value="San Cristóbal">San Cristóbal</option>
+                                                    <option @(Model.Ubicacion == "San José de Ocoa" ? Html.Raw("selected ") : Html.Raw("")) value="San José de Ocoa">San José de Ocoa</option>
+                                                    <option @(Model.Ubicacion == "San Juan" ? Html.Raw("selected ") : Html.Raw("")) value="San Juan">San Juan</option>
+                                                    <option @(Model.Ubicacion == "San Pedro de Macorís" ? Html.Raw("selected ") : Html.Raw("")) value="San Pedro de Macorís">San Pedro de Macorís</option>
+                                                    <option @(Model.Ubicacion == "Santiago" ? Html.Raw("selected ") : Html.Raw("")) value="Santiago">Santiago</option>
+                                                    <option @(Model.Ubicacion == "Santiago Rodríguez" ? Html.Raw("selected ") : Html.Raw("")) value="Santiago Rodríguez">Santiago Rodríguez</option>
+                                                    <option @(Model.Ubicacion == "Santo Domingo" ? Html.Raw("selected ") : Html.Raw("")) value="Santo Domingo">Santo Domingo</option>
+                                                    <option @(Model.Ubicacion == "Valverde" ? Html.Raw("selected ") : Html.Raw("")) value="Valverde">Valverde</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.Color, htmlAttributes: new { @class = "control-label col-md-2" })
+                                            <div class="col-md-10">
+                                                @Html.DropDownListFor(model => model.Color, new SelectList(ViewBag.Colors, "Value", "Text"), new { @class = "form-control certificado", @required = "required" })
+                                                @Html.ValidationMessageFor(model => model.Color, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <div class="col-md-12">
+                                                    <input type="submit" value="Guardar" class="btn btn-primary pull-right" />
+                                                    @Html.ActionLink("Volver al listado", "Index")
+                                                </div>
+                                            </div>
+                                        </div>
+                                     </div>
+                                }
+
+                                
+                            </div><!-- /.box-body -->
+                        </div><!-- /.box -->
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </section><!-- /.content -->
+        </div><!-- /.content-wrapper -->
+    </div>
+</div>
+
+
+@*Import Sidebar Right*@
+@Html.Partial("~/Views/Shared/_SidebarRight.cshtml")

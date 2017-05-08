@@ -1,0 +1,15 @@
+﻿@model RD.Data.Models.Direccion
+
+<div class="form-group dir-con" id="direccion_@(ViewBag.Num)">
+
+    <label class="control-label col-md-2">Dirección</label>
+
+    <div class="col-md-8">
+        <textarea class="form-control" cols="20" id="Direcciones_@(ViewBag.Num)__Descripcion" name="Direcciones[@(ViewBag.Num)].Descripcion" required="required" rows="2" style="margin-top: 0; margin-bottom: 0; height: 54px;"></textarea>
+    </div>
+    <div class="col-md-1">
+        <button class="btn btn-danger btn-sm" onclick="$('#direccion_@(ViewBag.Num)').remove();$('#Direcciones_@(ViewBag.Num)__Descripcion').val('');$('#Direcciones_@(ViewBag.Num)__Descripcion').removeAttr('required');return false;"><span class="glyphicon glyphicon-trash"></span></button>
+    </div>
+</div>
+
+

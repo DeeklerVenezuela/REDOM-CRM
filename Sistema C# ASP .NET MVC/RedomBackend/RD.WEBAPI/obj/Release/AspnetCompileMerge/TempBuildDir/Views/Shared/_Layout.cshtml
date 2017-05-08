@@ -1,0 +1,113 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Sistema de gestion</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+
+    @Styles.Render("~/Content/css")
+
+    @Scripts.Render("~/bundles/jquery")
+
+    @Scripts.Render("~/bundles/unobstrusive")
+
+    <meta name="description" content="Sistema de gestion" />
+
+    <meta name="developer" content="Jean Roles" />
+
+    <meta name="developerwebsite" content="deekler.com" />
+</head>
+<body class="hold-transition skin-blue sidebar-mini fixed">
+
+
+
+
+    @RenderBody()
+
+
+
+    @RenderSection("scripts", required: false)
+
+    @Scripts.Render("~/bundles/bootstrap")
+    <script>
+        $(function () {
+            $("#example1").DataTable();
+            $('#example2').DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": false,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false
+            });
+        });
+    </script>
+
+    <script type="text/javascript">
+    $(document).ready(function () {
+
+        //Set active ítem
+        var active = '@HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString()';
+            var element = $("ul").find("[data-controller='" + active.toLowerCase() + "']");
+            $("ul").find("[data-controller='" + active.toLowerCase() + "']").parent().parent().parent().parent().addClass('active');
+            $("ul").find("[data-controller='" + active.toLowerCase() + "']").parent().parent().addClass('active');
+            element.addClass('active');
+
+            if ('@Session["LOGIN"]' != 'ADMIN') {
+
+                var af = '@Session["Afiliados"]';
+                var ar = '@Session["Archivos"]';
+                var cr = '@Session["Certificados"]';
+                var pg = '@Session["Pagos"]';
+                var dc = '@Session["Documentaciones"]';
+                var dm = '@Session["Dummies"]';
+                var es = '@Session["Especiales"]';
+                var ht = '@Session["Hoteles"]';
+                var pr = '@Session["Permisos"]';
+                var ps = '@Session["Personas"]';
+                var pp = '@Session["Prospectos"]';
+                var rs = '@Session["Reservas"]';
+                var si = '@Session["Sistema"]';
+
+                if (af == '00000')
+                    $('[data-controller="afiliados"]').remove();
+                if (ar == '00000')
+                    $('[data-controller="archivos"]').remove();
+                if (cr == '00000')
+                    $('[data-controller="certificados"]').remove();
+                if (pg == '00000')
+                    $('[data-controller="pagos"]').remove();
+                if (dc == '00000')
+                    $('[data-controller="documentaciones"]').remove();
+                if (dm == '00000')
+                    $('[data-controller="dummies"]').remove();
+                if (ht == '00000')
+                    $('[data-controller="hoteles"]').remove();
+                if (ps == '00000')
+                    $('[data-controller="empleadoes"]').parent().parent().remove();
+                if (ps == '00000')
+                    $('[data-controller="userestadoes"]').remove();
+                if (pp == '00000')
+                    $('[data-controller="prospectos"]').remove();
+                if (rs == '00000')
+                    $('[data-controller="reservas"]').remove();
+                if (si == '00000')
+                    $('[data-controller="sistema"]').remove();
+                
+            }
+
+            
+
+    })
+    </script>
+
+
+
+</body>
+</html>

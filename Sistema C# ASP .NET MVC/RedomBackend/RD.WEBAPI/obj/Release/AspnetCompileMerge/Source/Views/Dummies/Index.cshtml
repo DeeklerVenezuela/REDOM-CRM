@@ -1,0 +1,112 @@
+﻿@model RD.Data.Models.ControlDummy
+
+@{
+    ViewBag.Title = "Prospectos";
+}
+
+<div class="wrapper">
+
+    @Html.Partial("~/Views/Shared/_Header.cshtml")
+
+    @*Import Sidebar Left*@
+    @Html.Partial("~/Views/Shared/_SidebarLeft.cshtml")
+    <div class="wrapper">
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>
+                    Sistema de gestión
+                    <small>Dummy</small>
+                </h1>
+                <ol class="breadcrumb">
+                    <li><a href="#"><i class="fa fa-newspaper-o"></i> Home</a></li>
+                    <li><a href="#">Dummy</a></li>
+                </ol>
+            </section>
+            <section class="content">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="box">
+                            <div class="box-header">
+                                <h3 class="box-title">Seleccionar prospecto al sistema</h3>
+                                <hr />
+                            </div><!-- /.box-header -->
+                            <div class="box-body">
+
+                                
+                                <p class="text-danger">@ViewBag.State</p>
+
+                                <div class="form-horizontal">
+                                   <p class="text-danger">@ViewBag.SetResult</p>
+                                    @if (Model != null)
+                                    {
+                                        
+                                    <div class="box box-solid box-default">
+                                        <div class="box-header with-border">
+
+                                            <h3 class="box-title">Último prospecto trabajado</h3>
+                                            <div class="box-tools pull-right">
+                                                <a href="~/Prospectos/AfterAfiliate/@(Model.Prospecto.ProspectoID)" class="btn btn-box-tool" title="Último prospecto seleccionado" data-widget="chat-pane-toggle"><i class="glyphicon glyphicon-pencil"></i></a>
+                                            </div><!-- /.box-tools -->
+                                        </div><!-- /.box-header -->
+                                        <div class="box-body">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-4">Nombre</label>
+                                                    <div class="col-md-8">                 
+                                                        <input value="@(Model.Prospecto.Nombres + " " + Model.Prospecto.Apellido1 + " "+ Model.Prospecto.Apellido2)" class="form-control" readonly/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-4">Cédula</label>
+                                                    <div class="col-md-8">
+                                                        <input value="@(Model.Prospecto.Cedula)" class="form-control" readonly/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-4">Email</label>
+                                                    <div class="col-md-8">
+                                                        <input value="@(Model.Prospecto.Email)" class="form-control" readonly/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-4">Fecha</label>
+                                                    <div class="col-md-8">
+                                                        <input value="@(Model.Prospecto.FechaHora)" class="form-control" readonly/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    }
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                           
+                                            <br />
+                                            <br />
+                                            @Html.ActionLink("Solicitar prospecto", "GetProspecto", null, new { @class = "btn btn-primary btn-lg center-block", @style="width:200px;" })
+                                            <br />
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+
+
+                            </div><!-- /.box-body -->
+                        </div><!-- /.box -->
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </section><!-- /.content -->
+        </div><!-- /.content-wrapper -->
+    </div>
+</div>
+
+
+@*Import Sidebar Right*@
+@Html.Partial("~/Views/Shared/_SidebarRight.cshtml")

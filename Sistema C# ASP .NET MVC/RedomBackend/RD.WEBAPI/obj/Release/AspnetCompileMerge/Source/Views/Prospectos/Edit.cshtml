@@ -1,0 +1,283 @@
+﻿@model RD.Data.Models.Prospecto
+
+@{
+    ViewBag.Title = "Prospectos";
+}
+
+<div class="wrapper">
+
+    @Html.Partial("~/Views/Shared/_Header.cshtml")
+
+    @*Import Sidebar Left*@
+    @Html.Partial("~/Views/Shared/_SidebarLeft.cshtml")
+    <div class="wrapper">
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>
+                    Sistema de gestión
+                    <small>Prospectos</small>
+                </h1>
+                <ol class="breadcrumb">
+                    <li><a href="#"><i class="fa fa-newspaper-o"></i> Home</a></li>
+                    <li><a href="#">Prospectos</a></li>
+                </ol>
+            </section>
+            <section class="content">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="box">
+                            <div class="box-header">
+                                <h3 class="box-title">Prospectos Registrados</h3>
+                                <hr />
+                            </div><!-- /.box-header -->
+                            <div class="box-body">
+
+                                @using (Html.BeginForm("PostDummy", "Prospectos"))
+                                {
+                                    @Html.AntiForgeryToken()
+
+                                    <div class="form-horizontal">
+                                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                        @Html.HiddenFor(model => model.ProspectoID)
+                                        <div class="row">
+
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    @Html.LabelFor(model => model.Nombres, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                    <div class="col-md-10">
+                                                        @Html.EditorFor(model => model.Nombres, new { htmlAttributes = new { @class = "form-control" } })
+                                                        @Html.ValidationMessageFor(model => model.Nombres, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-5">Primer Apellido</label>
+                                                    <div class="col-md-7">
+                                                        @Html.EditorFor(model => model.Apellido1, new { htmlAttributes = new { @class = "form-control" } })
+                                                        @Html.ValidationMessageFor(model => model.Apellido1, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-5">Segundo Apellido</label>
+                                                    <div class="col-md-7">
+                                                        @Html.EditorFor(model => model.Apellido2, new { htmlAttributes = new { @class = "form-control" } })
+                                                        @Html.ValidationMessageFor(model => model.Apellido2, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-2">Cédula</label>
+                                                    <div class="col-md-10">
+                                                        @Html.EditorFor(model => model.Cedula, new { htmlAttributes = new { @class = "form-control cedula-mask" } })
+
+                                                        @Html.ValidationMessageFor(model => model.Cedula, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-3">Objeción</label>
+                                                    <div class="col-md-9">
+                                                        @Html.DropDownListFor(model => model.Respuesta, new SelectList(@ViewBag.Objeciones, "Titulo", "Titulo"), new { @class = "form-control" })
+                                                        @Html.ValidationMessageFor(model => model.Respuesta, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    @Html.LabelFor(model => model.Fax, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                    <div class="col-md-10">
+                                                        @Html.EditorFor(model => model.Fax, new { htmlAttributes = new { @class = "form-control" } })
+                                                        @Html.ValidationMessageFor(model => model.Fax, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="col-md-4">
+
+
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-6">Fecha de Nacimiento</label>
+
+                                                    <div class="col-md-6">
+                                                        <div class='input-group date datepickershortday'>
+                                                            @Html.EditorFor(model => model.FechaDeNacimiento, new { htmlAttributes = new { @class = "form-control" } })
+                                                            <span class="input-group-addon add-on">
+
+                                                                <span class="glyphicon glyphicon-calendar">
+                                                                </span>
+                                                            </span>
+                                                        </div>
+                                                        @*@Html.EditorFor(model => model.FechaDeNacimiento, new { htmlAttributes = new { @class = "form-control" } })*@
+                                                        @Html.ValidationMessageFor(model => model.FechaDeNacimiento, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                    <div class="col-md-10">
+                                                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @type = "email" } })
+                                                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    @Html.LabelFor(model => model.Comentario, htmlAttributes: new { @class = "control-label col-md-3" })
+                                                    <div class="col-md-9">
+                                                        @Html.TextAreaFor(model => model.Comentario, new { @class = "form-control" })
+                                                        @Html.ValidationMessageFor(model => model.Comentario, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="col-md-12">
+
+
+                                                @for (var item = 0; item < Model.Telefonos.Count; item++)
+                                                {
+
+                                                    <div class="form-group email-con" id="telefono_@(item)">
+                                                        <label class="control-label col-md-2">Teléfono</label>
+                                                        <div class="col-md-3">
+                                                            @Html.HiddenFor(model => model.Telefonos[item].TelefonoID)
+                                                            <div class='input-group col-md-12'>
+                                                                @Html.EditorFor(model => model.Telefonos[item].Tipo, new { htmlAttributes = new { @class = "form-control", @readonly = "true" } })
+                                                            </div>
+                                                            @Html.ValidationMessageFor(model => model.Telefonos[item].Tipo, "", new { @class = "text-danger" })
+                                                        </div>
+
+                                                        <div class="col-md-3">
+                                                            <div class='input-group col-md-12'>
+                                                                @Html.EditorFor(model => model.Telefonos[item].Descripcion, new { htmlAttributes = new { @class = "form-control telefono-mask" } })
+                                                            </div>
+                                                            @Html.ValidationMessageFor(model => model.Telefonos[item].Descripcion, "", new { @class = "text-danger" })
+                                                        </div>
+
+                                                        <label class="control-label col-md-1">Ext.</label>
+                                                        <div class="col-md-3">
+                                                            <div class='input-group col-md-12'>
+                                                                @{
+                                                    string dis = "true";
+                                                    if (item == 2)
+                                                    {
+                                                        @Html.EditorFor(model => model.Telefonos[item].Extension, new { htmlAttributes = new { @class = "form-control" } })
+                                                    }
+                                                    else
+                                                    {
+                                                        @Html.EditorFor(model => model.Telefonos[item].Extension, new { htmlAttributes = new { @class = "form-control", @readonly = dis } })
+                                                    }
+                                                                }
+
+                                                            </div>
+                                                            @Html.ValidationMessageFor(model => model.Telefonos[item].Extension, "", new { @class = "text-danger" })
+                                                        </div>
+                                                    </div>
+                                                }
+
+
+                                            </div>
+
+                                            <div class="col-md-12">
+
+
+                                                @for (var item = 0; item < Model.Direcciones.Count; item++)
+                                                {
+
+                                                    <div class="form-group email-con" id="direccion_@(item)">
+                                                        <label class="control-label col-md-2">Dirección</label>
+                                                        <div class="col-md-10">
+                                                            <div class='input-group col-md-12'>
+                                                                @Html.HiddenFor(model => model.Direcciones[item].DireccionID)
+                                                                @Html.EditorFor(model => model.Direcciones[item].Descripcion, new { htmlAttributes = new { @class = "form-control" } })
+                                                            </div>
+                                                            @Html.ValidationMessageFor(model => model.Direcciones[item].Descripcion, "", new { @class = "text-danger" })
+                                                        </div>
+
+                                                    </div>
+                                                }
+
+                                            </div>
+
+                                            <div class="col-md-12">
+
+                                                <div class="form-group">
+                                                    <div class="col-md-12">
+                                                        @Html.ActionLink("Volver al listado", "Index")
+                                                        <input type="submit" value="Guardar y Afiliar" class="btn btn-primary pull-right" style="margin-left:10px;" />
+                                                        <div onclick="OnlySave(); return false;" class="pull-right btn btn-default">Guardar</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+
+                                        </div>
+                                    </div>
+                                }
+
+
+                            </div><!-- /.box-body -->
+                        </div><!-- /.box -->
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </section><!-- /.content -->
+        </div><!-- /.content-wrapper -->
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+
+        $('.open-bar').removeClass("hide")
+        $.ajax({
+            url: '/Objeciones/GetAllObjeciones',
+            type: 'get',
+            success: function (result) {
+                var o = "'O'";
+                $.each(result, function (index, value) {
+                    $('.objeciones-list').append('<li data-type="O" onclick="OpenDetailsModal(' + value.ObjecionesDummyID + ',' + o + '); return false;" data-description="' + value.Descripcion + '"><a href="javascript::;"><i class="menu-icon ' + value.Color + '">' + value.Titulo[0] + '</i><div class="menu-info"><h4 class="control-sidebar-subheading">' + value.Titulo + '</h4></div></a></li>');
+                })
+
+            }
+        });
+
+        $.ajax({
+            url: '/HotelesDummys/GetAllHotelesAjax',
+            type: 'get',
+            success: function (result) {
+                var h = "'H'";
+                $.each(result, function (index, value) {
+                    $('.hoteles-list').append('<li onclick="OpenDetailsModal(' + value.HotelesDummyID + ',' + h + '); return false;" data-description=""><a href="javascript::;"><i class="menu-icon ' + value.Color + '">' + (value.Ubicacion != null ? value.Ubicacion[0] : '-') + '</i><div class="menu-info"><h4 class="control-sidebar-subheading">' + value.Ubicacion + '</h4></div></a></li>');
+                })
+                console.log(result);
+            }
+        });
+
+        $.ajax({
+            url: '/ScriptDummies/GetAllScripts',
+            type: 'get',
+            success: function (result) {
+                var s = "'S'";
+                $.each(result, function (index, value) {
+                    $('.script-list').append('<li onclick="OpenDetailsModal(' + value.ScriptDummyID + ',' + s + '); return false;" data-description="' + value.Descripcion + '"><a href="javascript::;"><i class="menu-icon ' + value.Color + '">' + value.Titulo[0] + '</i><div class="menu-info"><h4 class="control-sidebar-subheading">' + value.Titulo + '</h4></div></a></li>');
+                })
+
+            }
+        });
+
+        function openBar() {
+            $(".open-bar a").click();
+        }
+        setTimeout(openBar, 1000);
+
+
+    });
+</script>
+
+
+
+@*Import Sidebar Right*@
+@Html.Partial("~/Views/Shared/_SidebarRight.cshtml")

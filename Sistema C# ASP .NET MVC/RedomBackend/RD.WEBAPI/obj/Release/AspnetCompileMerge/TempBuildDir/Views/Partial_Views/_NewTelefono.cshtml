@@ -1,0 +1,24 @@
+﻿@model RD.Data.Models.Telefono
+
+
+<div class="form-group tel-con" id="telefono_@(ViewBag.Num)">
+    <label class="control-label col-md-2">Teléfono</label>
+    <div class="col-md-3">
+        <select class="form-control tel-@(ViewBag.Num)" id="Telefonos_@(ViewBag.Num)__Tipo" name="Telefonos[@(ViewBag.Num)].Tipo" onchange="Javascript:manageExt(@(ViewBag.Num));">
+            <option>Casa</option>
+            <option>Oficina</option>
+            <option>Móvil</option>
+            <option>Otro</option>
+        </select>
+    </div>
+    <div class="col-md-2">
+        <input class="form-control tel-@(ViewBag.Num)-ext text-box single-line" id="Telefonos_@(ViewBag.Num)__Extension" name="Telefonos[@(ViewBag.Num)].Extension" type="number" value="" disabled="">
+    </div>
+    <div class="col-md-4">
+        <input class="form-control telefono-mask text-box single-line" id="Telefonos_@(ViewBag.Num)__Descripcion" name="Telefonos[@(ViewBag.Num)].Descripcion" required="required" type="text" value="" placeholder="___ - ___ - ____">
+
+    </div>
+    <div class="col-md-1">
+        <button class="btn btn-danger btn-sm" onclick="$('#telefono_@(ViewBag.Num)').remove(); $('Telefonos_@(ViewBag.Num)__Descripcion').val(''); $('Telefonos_@(ViewBag.Num)__Descripcion').removeAttr('required'); return false;"><span class="glyphicon glyphicon-trash"></span></button>
+    </div>
+</div>

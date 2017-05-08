@@ -1,0 +1,200 @@
+﻿@model RD.Data.Models.Afiliado
+
+@{
+    ViewBag.Title = "Afiliados";
+}
+
+<div class="wrapper">
+
+    @Html.Partial("~/Views/Shared/_Header.cshtml")
+
+    @*Import Sidebar Left*@
+    @Html.Partial("~/Views/Shared/_SidebarLeft.cshtml")
+    <div class="wrapper">
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>
+                    Sistema de gestión
+                    <small>Afiliados</small>
+                </h1>
+                <ol class="breadcrumb">
+                    <li><a href="#"><i class="fa fa-newspaper-o"></i> Home</a></li>
+                    <li><a href="#">Afiliados</a></li>
+                </ol>
+            </section>
+            <section class="content">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="box">
+                            <div class="box-header">
+                                <h3 class="box-title">Afiliados Registrados</h3>
+                                <hr />
+                            </div><!-- /.box-header -->
+                            <div class="box-body">
+
+                                <h3>Estás seguro(a) de eliminar este afiliado?</h3>
+                                <div>
+                                    <h4>Afiliado</h4>
+                                    <hr />
+                                    <dl class="dl-horizontal">
+                                        <dt>
+                                            @Html.DisplayNameFor(model => model.AfiliadoIndice)
+                                        </dt>
+
+                                        <dd>
+                                            @Html.DisplayFor(model => model.AfiliadoIndice)
+                                        </dd>
+
+                                        <dt>
+                                            @Html.DisplayNameFor(model => model.Cedula)
+                                        </dt>
+
+                                        <dd>
+                                            @Html.DisplayFor(model => model.Cedula)
+                                        </dd>
+
+                                        <dt>
+                                            @Html.DisplayNameFor(model => model.Pasaporte)
+                                        </dt>
+
+                                        <dd>
+                                            @Html.DisplayFor(model => model.Pasaporte)
+                                        </dd>
+
+                                        <dt>
+                                            @Html.DisplayNameFor(model => model.Nombres)
+                                        </dt>
+
+                                        <dd>
+                                            @Html.DisplayFor(model => model.Nombres)
+                                        </dd>
+
+                                        <dt>
+                                            @Html.DisplayNameFor(model => model.Apellido1)
+                                        </dt>
+
+                                        <dd>
+                                            @Html.DisplayFor(model => model.Apellido1)
+                                        </dd>
+
+                                        <dt>
+                                            @Html.DisplayNameFor(model => model.Apellido2)
+                                        </dt>
+
+                                        <dd>
+                                            @Html.DisplayFor(model => model.Apellido2)
+                                        </dd>
+
+                                        <dt>
+                                            @Html.DisplayNameFor(model => model.RazonSocial)
+                                        </dt>
+
+                                        <dd>
+                                            @Html.DisplayFor(model => model.RazonSocial)
+                                        </dd>
+
+                                        <dt>
+                                            @Html.DisplayNameFor(model => model.RNC)
+                                        </dt>
+
+                                        <dd>
+                                            @Html.DisplayFor(model => model.RNC)
+                                        </dd>
+
+                                        <dt>
+                                            @Html.DisplayNameFor(model => model.Email)
+                                        </dt>
+
+                                        <dd>
+                                            @Html.DisplayFor(model => model.Email)
+                                        </dd>
+
+                                        <dt>
+                                            @Html.DisplayNameFor(model => model.Cumpleanio)
+                                        </dt>
+
+                                        <dd>
+                                            @Html.DisplayFor(model => model.Cumpleanio)
+                                        </dd>
+
+                                        <dt>
+                                            @Html.DisplayNameFor(model => model.MesesAdicionales)
+                                        </dt>
+
+                                        <dd>
+                                            @Html.DisplayFor(model => model.MesesAdicionales)
+                                        </dd>
+
+                                        <dt>
+                                            @Html.DisplayNameFor(model => model.TarjetaAdicional)
+                                        </dt>
+
+                                        <dd>
+                                            @Html.DisplayFor(model => model.TarjetaAdicional)
+                                        </dd>
+
+                                        <dt>
+                                            @Html.DisplayNameFor(model => model.FechaVencimiento)
+                                        </dt>
+
+                                        <dd>
+                                            @Html.DisplayFor(model => model.FechaVencimiento)
+                                        </dd>
+
+                                        <dt>
+                                            @Html.DisplayNameFor(model => model.FechaHora)
+                                        </dt>
+
+                                        <dd>
+                                            @Html.DisplayFor(model => model.FechaHora)
+                                        </dd>
+
+                                        <dt>
+                                            @Html.DisplayNameFor(model => model.Observaciones)
+                                        </dt>
+
+                                        <dd>
+                                            @Html.DisplayFor(model => model.Observaciones)
+                                        </dd>
+
+                                        <dt>
+                                            @Html.DisplayNameFor(model => model.Status)
+                                        </dt>
+
+                                        <dd>
+                                            @Html.DisplayFor(model => model.Status)
+                                        </dd>
+
+                                        <dt>
+                                            @Html.DisplayNameFor(model => model.CostoMembresia)
+                                        </dt>
+
+                                        <dd>
+                                            @Html.DisplayFor(model => model.CostoMembresia)
+                                        </dd>
+
+                                    </dl>
+
+                                    @using (Html.BeginForm())
+                                    {
+                                        @Html.AntiForgeryToken()
+
+                                        <div class="form-actions no-color">
+                                            <input type="submit" value="Delete" class="btn btn-default" /> |
+                                            @Html.ActionLink("Volver al listado", "Index")
+                                        </div>
+                                    }
+                                </div>
+                            </div><!-- /.box-body -->
+                        </div><!-- /.box -->
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </section><!-- /.content -->
+        </div><!-- /.content-wrapper -->
+    </div>
+</div>
+
+
+@*Import Sidebar Right*@
+@Html.Partial("~/Views/Shared/_SidebarRight.cshtml")

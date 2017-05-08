@@ -1,0 +1,25 @@
+﻿
+    <div class="form-group  con-hab col-md-12" id="hotel-@(ViewBag.Num)" data-hotel="@(ViewBag.Num)">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="control-label col-md-2">Adultos</label>
+                <div class="col-md-10">
+                    <input type="number" min="0" max="4" value="1" class="spinners form-control" data-hab="@(ViewBag.Num)" id="ad@(ViewBag.Num)" data-type="a">
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="control-label col-md-2">Niños</label>
+                <div class="col-md-10">
+                    <input type="number" min="0" max="0" value="0" class="spinners form-control" data-hab="@(ViewBag.Num)" id="ni@(ViewBag.Num)" data-type="n">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-1">
+            <button class="btn btn-danger btn-sm" onclick="RemoveHotel(@(ViewBag.Num)); return false;"><span class=" glyphicon glyphicon-trash"></span></button>
+        </div>
+    </div>
+
+
